@@ -1,0 +1,3577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ankit Dubey — Sr. Hardware Design Engineer | Power Electronics & Innovation</title>
+
+<meta name="description" content="Ankit Dubey — Sr. Hardware Design Engineer specializing in high-speed PCB design, power electronics, EVSE systems, and cutting-edge hardware innovation. Passionate about research & development and exploring the cosmos.">
+
+<meta property="og:title" content="Ankit Dubey — Sr. Hardware Design Engineer">
+<meta property="og:description" content="Pioneering hardware solutions at the intersection of professional excellence and cosmic curiosity. Specializing in EVSE, power electronics, and advanced PCB design.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-void:#0a1712;
+    --bg-panel:#0f2119;
+    --bg-panel-2:#132a20;
+    --line:#1d3a2b;
+    --line-soft:#182f23;
+    --copper:#d9a05b;
+    --copper-bright:#f0c589;
+    --cyan:#6fe7dd;
+    --silk:#edefe9;
+    --muted:#87a094;
+    --muted-dim:#5c6f65;
+    --accent-gold:#d4af37;
+    --radius:14px;
+    --maxw:1180px;
+    --display: 'Space Grotesk', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --body: 'IBM Plex Sans', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{ 
+    background:
+      radial-gradient(circle at 1px 1px, rgba(111,231,221,0.06) 1px, transparent 0) 0 0/28px 28px,
+      var(--bg-void);
+    color:var(--silk);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  ::selection{background:var(--copper);color:#0a1712;}
+
+  :focus-visible{
+    outline:2px solid var(--cyan);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--copper);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--copper);
+    display:inline-block;
+  }
+
+  h1,h2,h3{
+    font-family:var(--display);
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--silk);
+  }
+
+  .section-title{
+    font-size:clamp(28px,4vw,42px);
+    margin-bottom:14px;
+  }
+  .section-sub{
+    color:var(--muted);
+    max-width:560px;
+    margin-bottom:56px;
+    font-size:15.5px;
+  }
+
+  section{
+    position:relative;
+    padding:120px 0;
+    border-top:1px solid var(--line-soft);
+  }
+  section#hero{border-top:none;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(10,23,18,0.55);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  header.scrolled{
+    border-bottom-color:var(--line);
+    background:rgba(10,23,18,0.88);
+  }
+  .navbar{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--mono);
+    font-size:14px;
+    letter-spacing:0.06em;
+    color:var(--silk);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo .dot{width:7px;height:7px;border-radius:50%;background:var(--copper);box-shadow:0 0 8px var(--copper);}
+  nav ul{display:flex;gap:28px;}
+  nav a{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.05em;
+    color:var(--muted);
+    text-transform:uppercase;
+    padding:6px 0;
+    border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  nav a:hover, nav a.active{
+    color:var(--copper-bright);
+    border-color:var(--copper);
+  }
+  .nav-toggle{display:none;}
+
+  @media (max-width:860px){
+    nav ul{
+      position:fixed;
+      top:60px;left:0;right:0;
+      flex-direction:column;
+      background:rgba(10,23,18,0.98);
+      padding:20px 32px 28px;
+      gap:16px;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-8px);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;
+    }
+    nav ul.open{opacity:1;transform:translateY(0);pointer-events:auto;}
+    .nav-toggle{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:6px;
+    }
+    .nav-toggle span{width:22px;height:2px;background:var(--silk);}
+  }
+
+  /* ---------- TRACE RAIL ---------- */
+  .rail{
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:1px;
+    background:linear-gradient(to bottom, transparent, var(--line) 6%, var(--line) 94%, transparent);
+    display:none;
+  }
+  @media (min-width:1280px){ .rail{display:block; left:calc(50% - 590px);} }
+  .pad{
+    position:absolute;
+    left:-5px;
+    width:11px;height:11px;
+    border-radius:50%;
+    background:var(--bg-panel);
+    border:1px solid var(--muted-dim);
+    transition:border-color .4s ease, background .4s ease, box-shadow .4s ease;
+  }
+  .pad.lit{
+    border-color:var(--copper);
+    background:var(--copper);
+    box-shadow:0 0 12px 2px rgba(217,160,91,0.55);
+  }
+
+  /* ---------- HERO ---------- */
+  #hero{
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    padding-top:140px;
+    padding-bottom:80px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .hero-kicker{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--cyan);
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    margin-bottom:22px;
+    opacity:0;
+    animation:fadeUp .7s ease .1s forwards;
+  }
+  .hero-name{
+    font-size:clamp(42px,7vw,74px);
+    line-height:1.02;
+    margin-bottom:8px;
+    opacity:0;
+    animation:fadeUp .8s ease .2s forwards;
+  }
+  .hero-title{
+    font-family:var(--mono);
+    font-size:clamp(15px,2vw,19px);
+    color:var(--copper-bright);
+    margin-bottom:26px;
+    opacity:0;
+    animation:fadeUp .8s ease .35s forwards;
+  }
+  .hero-tagline{
+    color:var(--muted);
+    font-size:16.5px;
+    max-width:520px;
+    margin-bottom:14px;
+    opacity:0;
+    animation:fadeUp .8s ease .45s forwards;
+    line-height:1.7;
+  }
+  .hero-interests{
+    font-size:15px;
+    color:var(--cyan);
+    max-width:520px;
+    margin-bottom:38px;
+    opacity:0;
+    animation:fadeUp .8s ease .55s forwards;
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .hero-interests span{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .hero-cta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    opacity:0;
+    animation:fadeUp .8s ease .65s forwards;
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(16px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .btn{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.04em;
+    padding:13px 22px;
+    border-radius:9px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    cursor:pointer;
+    border:1px solid transparent;
+  }
+  .btn-primary{
+    background:var(--copper);
+    color:#0a1712;
+    font-weight:600;
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px -8px rgba(217,160,91,0.55);}
+  .btn-ghost{
+    border-color:var(--line);
+    color:var(--silk);
+  }
+  .btn-ghost:hover{border-color:var(--cyan); color:var(--cyan); transform:translateY(-2px);}
+  .btn-text{
+    color:var(--muted);
+    padding:13px 4px;
+  }
+  .btn-text:hover{color:var(--cyan);}
+
+  .schematic{
+    position:relative;
+    aspect-ratio:1/1;
+    max-width:420px;
+    margin:0 auto;
+    opacity:0;
+    animation:fadeUp 1s ease .4s forwards;
+  }
+  .schematic svg{width:100%;height:100%;}
+
+  .scroll-cue{
+    position:absolute;
+    bottom:34px;left:50%;
+    transform:translateX(-50%);
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted-dim);
+    letter-spacing:0.1em;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+  .scroll-cue .line{width:1px;height:34px;background:linear-gradient(var(--copper),transparent);animation:pulse 2s ease infinite;}
+  @keyframes pulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+    align-items:start;
+  }
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr; gap:40px;} }
+  .about-copy p{color:var(--muted); margin-bottom:16px; font-size:16px;}
+  .about-copy strong{color:var(--silk); font-weight:600;}
+  .stat-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .stat-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 22px;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .stat-card:hover{border-color:var(--copper); transform:translateY(-3px);}
+  .stat-num{
+    font-family:var(--display);
+    font-size:30px;
+    color:var(--copper-bright);
+    margin-bottom:4px;
+  }
+  .stat-label{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+
+  /* ---------- TIMELINE ---------- */
+  .tl{position:relative; padding-left:32px;}
+  .tl::before{
+    content:"";
+    position:absolute;
+    left:5px; top:6px; bottom:6px;
+    width:1px;
+    background:linear-gradient(to bottom, var(--copper), var(--line) 85%);
+  }
+  .tl-item{position:relative; padding-bottom:52px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-node{
+    position:absolute;
+    left:-32px; top:4px;
+    width:11px;height:11px;
+    border-radius:50%;
+    background:var(--bg-void);
+    border:2px solid var(--copper);
+  }
+  .tl-meta{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--cyan);
+    letter-spacing:0.05em;
+    margin-bottom:8px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .tl-role{font-size:20px; font-family:var(--display); font-weight:600; margin-bottom:4px;}
+  .tl-org{
+    font-family:var(--mono);
+    font-size:13px;
+    color:var(--muted);
+    margin-bottom:14px;
+  }
+  .tl-org .tag{
+    display:inline-block;
+    border:1px solid var(--line);
+    border-radius:5px;
+    padding:2px 8px;
+    font-size:11px;
+    color:var(--muted);
+    margin-left:6px;
+  }
+  .tl-list{color:var(--muted); font-size:15px;}
+  .tl-list li{position:relative; padding-left:18px; margin-bottom:8px;}
+  .tl-list li::before{
+    content:"";
+    position:absolute; left:0; top:9px;
+    width:6px;height:1px;
+    background:var(--copper);
+  }
+
+  /* ---------- COMMUNICATION INTERFACES ---------- */
+  .interfaces-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+  }
+  @media (max-width:700px){ .interfaces-grid{grid-template-columns:1fr;} }
+  .interface-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .interface-card:hover{border-color:var(--cyan); transform:translateY(-3px);}
+  .interface-card h3{
+    font-size:16px;
+    margin-bottom:12px;
+    color:var(--cyan);
+  }
+  .interface-card ul{
+    font-size:14px;
+    color:var(--muted);
+  }
+  .interface-card li{
+    margin-bottom:8px;
+    padding-left:16px;
+    position:relative;
+  }
+  .interface-card li::before{
+    content:"▸";
+    position:absolute;
+    left:0;
+    color:var(--copper);
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .project-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+  }
+  @media (max-width:860px){ .project-grid{grid-template-columns:1fr;} }
+  .pcard{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:30px;
+    position:relative;
+    overflow:hidden;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .pcard:hover{border-color:var(--copper); transform:translateY(-4px);}
+  .pcard::before{
+    content:"";
+    position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(90deg, var(--copper), transparent);
+    opacity:0; transition:opacity .25s ease;
+  }
+  .pcard:hover::before{opacity:1;}
+  .pcard-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:6px;
+  }
+  .pcard-title{font-family:var(--display); font-size:19px; font-weight:600;}
+  .pcard-dur{font-family:var(--mono); font-size:11.5px; color:var(--muted-dim); white-space:nowrap; padding-top:4px;}
+  .pcard-industry{font-family:var(--mono); font-size:12px; color:var(--copper); margin-bottom:16px;}
+  .pcard-block{margin-bottom:14px;}
+  .pcard-block h4{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--muted-dim); margin-bottom:6px;
+  }
+  .pcard-block p, .pcard-block li{color:var(--muted); font-size:14.5px;}
+  .pcard-block ul li{position:relative; padding-left:14px; margin-bottom:5px;}
+  .pcard-block ul li::before{content:"–"; position:absolute; left:0; color:var(--copper);}
+  .tech-badges{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
+  .badge{
+    font-family:var(--mono);
+    font-size:11px;
+    padding:5px 10px;
+    border-radius:6px;
+    border:1px solid var(--line);
+    color:var(--muted);
+    background:var(--bg-panel-2);
+  }
+  .conf-note{
+    margin-top:16px;
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted-dim);
+    border-top:1px dashed var(--line);
+    padding-top:12px;
+  }
+  .pcard-reflection{
+    margin-top:18px;
+    padding:16px 18px;
+    border-radius:10px;
+    background:var(--bg-panel-2);
+    border-left:2px solid var(--copper);
+  }
+  .pcard-reflection h4{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--cyan); margin-bottom:8px;
+  }
+  .pcard-reflection p{
+    color:var(--silk);
+    font-size:14px;
+    font-style:italic;
+    line-height:1.65;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px 40px;
+  }
+  @media (max-width:700px){ .skill-groups{grid-template-columns:1fr;} }
+  .skill-group h3{
+    font-family:var(--mono);
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--copper);
+    margin-bottom:14px;
+    padding-bottom:10px;
+    border-bottom:1px solid var(--line);
+  }
+  .skill-pills{display:flex; flex-wrap:wrap; gap:9px;}
+  .pill{
+    font-family:var(--mono);
+    font-size:12.5px;
+    padding:8px 13px;
+    border-radius:7px;
+    border:1px solid var(--line);
+    color:var(--silk);
+    background:var(--bg-panel);
+    transition:border-color .2s ease, color .2s ease, transform .2s ease;
+  }
+  .pill:hover{border-color:var(--cyan); color:var(--cyan); transform:translateY(-2px);}
+
+  /* ---------- EDUCATION ---------- */
+  /* ==========================================================
+   EDUCATION — TWO COLUMN DESIGN
+   Existing Education + Visual Journey
+   ========================================================== */
+
+.education-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+
+/* ----------------------------------------------------------
+   HEADER
+   ---------------------------------------------------------- */
+
+.education-heading {
+  margin-bottom: 45px;
+}
+
+.education-heading .section-kicker {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #d8a84e;
+}
+
+.education-heading h2 {
+  margin: 10px 0 0;
+
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(36px, 4vw, 56px);
+
+  letter-spacing: -2px;
+  color: #eef3ed;
+}
+
+.education-heading h2 span {
+  color: #d8a84e;
+}
+
+
+/* ----------------------------------------------------------
+   TWO COLUMN LAYOUT
+   ---------------------------------------------------------- */
+
+.education-layout {
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.65fr)
+    minmax(340px, .85fr);
+
+  gap: 28px;
+
+  align-items: start;
+}
+
+
+/* ----------------------------------------------------------
+   EXISTING LEFT SIDE
+   ---------------------------------------------------------- */
+
+.education-existing {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+
+/*
+   If your existing .edu-card CSS already looks good,
+   you can REMOVE this section and keep your current styling.
+*/
+
+.education-existing .edu-card {
+
+  position: relative;
+
+  padding: 30px;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 39, 29, .96),
+      rgba(8, 25, 19, .96)
+    );
+
+  border: 1px solid rgba(110, 145, 129, .22);
+
+  transition:
+    transform .35s ease,
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+
+
+.education-existing .edu-card:hover {
+
+  transform: translateY(-5px);
+
+  border-color:
+    rgba(216, 168, 78, .55);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.25),
+    0 0 30px rgba(216,168,78,.06);
+}
+
+
+.education-existing .edu-card h3 {
+
+  margin: 0;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 21px;
+
+  color: #eef3ed;
+}
+
+
+.education-existing .edu-meta {
+
+  margin-top: 8px;
+
+  font-family: "IBM Plex Mono", monospace;
+
+  font-size: 10px;
+
+  color: #73877d;
+}
+
+
+.education-existing .edu-card p {
+
+  margin: 20px 0;
+
+  font-family: "IBM Plex Sans", sans-serif;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+
+  color: #83978d;
+}
+
+
+/* ----------------------------------------------------------
+   RIGHT SIDE — ACADEMIC JOURNEY
+   ---------------------------------------------------------- */
+
+.academic-journey {
+
+  position: sticky;
+
+  top: 100px;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(216,168,78,.09),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(14,36,28,.98),
+      rgba(6,21,16,.98)
+    );
+
+  border: 1px solid rgba(216,168,78,.25);
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.25);
+
+  overflow: hidden;
+}
+
+
+/* subtle grid */
+
+.academic-journey::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background-image:
+
+    linear-gradient(
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 28px 28px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+
+/* ----------------------------------------------------------
+   JOURNEY HEADER
+   ---------------------------------------------------------- */
+
+.journey-header {
+
+  position: relative;
+
+  padding-bottom: 28px;
+
+  border-bottom:
+    1px solid rgba(110,145,129,.15);
+}
+
+
+.journey-header > span {
+
+  font-family: "IBM Plex Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  color: #d8a84e;
+}
+
+
+.journey-header h3 {
+
+  margin: 12px 0 10px;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 28px;
+
+  line-height: 1.1;
+
+  letter-spacing: -1px;
+
+  color: #eef3ed;
+}
+
+
+.journey-header p {
+
+  margin: 0;
+
+  font-family: "IBM Plex Sans", sans-serif;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  color: #71877d;
+}
+
+.journey-tagline {
+  margin: 8px 0 11px !important;
+
+  font-family: "Space Grotesk", sans-serif !important;
+
+  font-size: 13px !important;
+
+  font-weight: 700 !important;
+
+  line-height: 1.45 !important;
+
+  letter-spacing: -0.2px;
+
+  color: #e8eee9 !important;
+
+  text-wrap: balance;
+}
+
+/* ----------------------------------------------------------
+   JOURNEY TIMELINE
+   ---------------------------------------------------------- */
+
+.journey-line {
+
+  position: relative;
+
+  padding: 30px 0 10px;
+}
+
+
+/* vertical line */
+
+.journey-line::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: 20px;
+
+  top: 35px;
+
+  bottom: 35px;
+
+  width: 1px;
+
+  background:
+
+    linear-gradient(
+      to bottom,
+      rgba(216,168,78,.7),
+      rgba(216,168,78,.12),
+      rgba(216,168,78,.6)
+    );
+
+  box-shadow:
+    0 0 12px rgba(216,168,78,.15);
+}
+
+
+/* ----------------------------------------------------------
+   JOURNEY STEP
+   ---------------------------------------------------------- */
+
+.journey-step {
+
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 42px 1fr;
+
+  gap: 20px;
+
+  margin-bottom: 35px;
+}
+
+
+.journey-step:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ----------------------------------------------------------
+   JOURNEY DOT
+   ---------------------------------------------------------- */
+
+.journey-dot {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 42px;
+
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #092018;
+
+  border: 1px solid rgba(216,168,78,.55);
+
+  box-shadow:
+    0 0 0 5px #071811,
+    0 0 20px rgba(216,168,78,.12);
+
+  font-family: "IBM Plex Mono", monospace;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  color: #d8a84e;
+
+  transition: all .35s ease;
+}
+
+
+.journey-step:hover .journey-dot {
+
+  background: #d8a84e;
+
+  color: #071811;
+
+  transform: scale(1.1);
+
+  box-shadow:
+    0 0 0 5px #071811,
+    0 0 25px rgba(216,168,78,.4);
+}
+
+
+/* Active final milestone */
+
+.journey-step.active .journey-dot {
+
+  background: #d8a84e;
+
+  color: #071811;
+
+  box-shadow:
+    0 0 0 5px #071811,
+    0 0 30px rgba(216,168,78,.4);
+}
+
+
+/* ----------------------------------------------------------
+   JOURNEY CONTENT
+   ---------------------------------------------------------- */
+
+.journey-content {
+
+  padding-top: 1px;
+}
+
+
+.journey-year {
+
+  font-family: "IBM Plex Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+
+  color: #d8a84e;
+}
+
+
+.journey-content h4 {
+
+  margin: 6px 0 5px;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 16px;
+
+  color: #e9eee9;
+}
+
+
+.journey-content p {
+
+  margin: 0 0 7px;
+
+  font-family: "IBM Plex Sans", sans-serif;
+
+  font-size: 11px;
+
+  color: #778c82;
+}
+
+
+.journey-content strong {
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 22px;
+
+  color: #d8a84e;
+}
+
+
+.journey-content small {
+
+  margin-left: 6px;
+
+  font-family: "IBM Plex Mono", monospace;
+
+  font-size: 8px;
+
+  color: #687c73;
+}
+
+
+/* ----------------------------------------------------------
+   SUMMARY
+   ---------------------------------------------------------- */
+
+.journey-summary {
+
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  margin-top: 25px;
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid rgba(110,145,129,.15);
+}
+
+
+.journey-summary div {
+
+  text-align: center;
+
+  border-right:
+    1px solid rgba(110,145,129,.13);
+}
+
+
+.journey-summary div:last-child {
+  border-right: none;
+}
+
+
+.journey-summary strong {
+
+  display: block;
+
+  font-family: "Space Grotesk", sans-serif;
+
+  font-size: 17px;
+
+  color: #d8a84e;
+}
+
+
+.journey-summary span {
+
+  display: block;
+
+  margin-top: 5px;
+
+  font-family: "IBM Plex Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  color: #657a70;
+}
+
+
+/* ----------------------------------------------------------
+   MOBILE
+   ---------------------------------------------------------- */
+
+@media (max-width: 950px) {
+
+  .education-layout {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .academic-journey {
+
+    position: relative;
+
+    top: auto;
+
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .education-section {
+
+    padding:
+      60px 16px;
+  }
+
+  .academic-journey {
+
+    padding: 24px 20px;
+
+  }
+
+  .education-existing .edu-card {
+
+    padding: 23px;
+
+  }
+
+  .journey-header h3 {
+
+    font-size: 25px;
+
+  }
+
+}
+
+  /* ---------- RESUME ---------- */
+  .resume-card{
+    background:linear-gradient(145deg, var(--bg-panel), var(--bg-panel-2));
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:44px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:32px;
+    align-items:center;
+  }
+  @media (max-width:700px){ .resume-card{grid-template-columns:1fr;} }
+  .resume-snapshot{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px 28px;
+    margin-top:18px;
+  }
+  .resume-snapshot div{font-family:var(--mono); font-size:12.5px; color:var(--muted);}
+  .resume-snapshot span{display:block; color:var(--silk); font-family:var(--body); font-size:14px; margin-top:2px;}
+  .resume-actions{display:flex; flex-direction:column; gap:12px; min-width:190px;}
+
+  /* ---------- BEYOND THE CODE ---------- */
+  .hobby-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  @media (max-width:900px){ .hobby-grid{grid-template-columns:1fr;} }
+  .hobby-card{
+    border-radius:var(--radius);
+    padding:30px;
+    border:1px solid var(--line);
+    background:var(--bg-panel);
+    position:relative;
+    min-height:260px;
+    display:flex;
+    flex-direction:column;
+  }
+  .hobby-icon{font-size:32px; margin-bottom:16px;}
+  .hobby-card h3{font-size:18px; margin-bottom:10px;}
+  .hobby-card p{color:var(--muted); font-size:14.5px; flex-grow:1; line-height:1.7;}
+  .hobby-card .placeholder-tag{
+    margin-top:16px;
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--muted-dim);
+    border-top:1px dashed var(--line);
+    padding-top:10px;
+  }
+  .hobby-card.myth{
+    border-color:#3a2f1c;
+    background:linear-gradient(160deg, var(--bg-panel), #17190f);
+  }
+  .hobby-card.myth::after{
+    content:"";
+    position:absolute; top:0; right:0;
+    width:60px; height:60px;
+    background:radial-gradient(circle at top right, rgba(217,160,91,0.18), transparent 70%);
+  }
+  .hobby-card.space{
+    border-color:#1a2540;
+    background:linear-gradient(160deg, var(--bg-panel), #0f1a28);
+  }
+  .hobby-card.space::after{
+    content:"";
+    position:absolute; top:0; right:0;
+    width:60px; height:60px;
+    background:radial-gradient(circle at top right, rgba(111,231,221,0.15), transparent 70%);
+  }
+
+  /* ---------- JOURNEY ---------- */
+  .journey{
+    display:flex;
+    gap:24px;
+    overflow-x:auto;
+    padding:12px 0;
+    scroll-behavior:smooth;
+  }
+  .journey::-webkit-scrollbar{height:8px;}
+  .journey::-webkit-scrollbar-track{background:var(--bg-panel);}
+  .journey::-webkit-scrollbar-thumb{background:var(--copper); border-radius:4px;}
+  .journey-item{
+    flex:0 0 240px;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px;
+    position:relative;
+  }
+  .journey-dot{
+    width:12px;height:12px;
+    border-radius:50%;
+    background:var(--copper);
+    margin-bottom:12px;
+    box-shadow:0 0 8px rgba(217,160,91,0.5);
+  }
+  .journey-item .yr{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--cyan);
+    margin-bottom:8px;
+  }
+  .journey-item h4{
+    font-size:16px;
+    margin-bottom:8px;
+  }
+  .journey-item p{
+    font-size:14px;
+    color:var(--muted);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+  }
+  @media (max-width:700px){ .contact-grid{grid-template-columns:1fr;} }
+  .contact-card{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px;
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .contact-card:hover{border-color:var(--copper); transform:translateY(-3px);}
+  .contact-icon{
+    font-family:var(--mono);
+    font-size:16px;
+    font-weight:600;
+    color:var(--copper);
+    min-width:32px;
+  }
+  .contact-label{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin-bottom:4px;
+  }
+  .contact-value{
+    font-size:15px;
+    color:var(--silk);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--bg-panel);
+    border-top:1px solid var(--line);
+    padding:40px 0;
+    text-align:center;
+    color:var(--muted-dim);
+    font-family:var(--mono);
+    font-size:12px;
+  }
+
+  /* ---------- EMPTY STATE ---------- */
+  .empty-state{
+    background:var(--bg-panel);
+    border:1px dashed var(--line);
+    border-radius:var(--radius);
+    padding:60px 40px;
+    text-align:center;
+  }
+  .empty-state h3{
+    margin-bottom:8px;
+  }
+  .empty-state p{
+    color:var(--muted);
+  }
+
+  /* ---------- PLACEHOLDER TAG ---------- */
+  .placeholder-tag{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:10px;
+    padding:4px 8px;
+    border-radius:4px;
+    background:rgba(217,160,91,0.15);
+    color:var(--copper);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+  }
+</style>
+
+</head>
+
+<body>
+
+<header id="siteHeader">
+  <div class="navbar">
+    <div class="logo">
+      <div class="dot"></div>
+      Ankit Dubey
+    </div>
+    <nav>
+      <ul id="navList">
+        <li><a href="#about" data-nav>About</a></li>
+        <li><a href="#education" data-nav>Education</a></li>
+        <li><a href="#interests" data-nav>Interests</a></li>
+        <li><a href="#experience" data-nav>Experience</a></li>
+        <li><a href="#projects" data-nav>Projects</a></li>
+        <li><a href="#skills" data-nav>Skills</a></li>
+        <li><a href="#contact" data-nav>Contact</a></li>
+        <li><a href="#Biodata" data-nav>Biodata</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div id="rail" class="rail"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-kicker">Sr. Hardware Design Engineer</div>
+          <h1 class="hero-name">Ankit Dubey</h1>
+          <h2 class="hero-title">Sr. Hardware Design Engineer</h2>
+          
+          <p class="hero-tagline">
+            Architecting next-generation power electronics and EVSE solutions with precision. Pioneering innovation where circuits meet compliance and ambition meets execution.
+          </p>
+          
+          <div class="hero-interests">
+            <span>🚀 Research & Development</span>
+            <span>⚡ Power Electronics</span>
+            <span>🌌 Astrophysics</span>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+          </div>
+        </div>
+        <div class="schematic reveal">
+          <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="circuitGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#d9a05b; stop-opacity:0.8" />
+                <stop offset="100%" style="stop-color:#6fe7dd; stop-opacity:0.6" />
+              </linearGradient>
+            </defs>
+            <circle cx="200" cy="200" r="180" fill="none" stroke="#1d3a2b" stroke-width="2"/>
+            <circle cx="200" cy="200" r="140" fill="none" stroke="#6fe7dd" stroke-width="1" opacity="0.3"/>
+            <circle cx="200" cy="200" r="100" fill="none" stroke="#d9a05b" stroke-width="1.5" opacity="0.6"/>
+            <g stroke="url(#circuitGrad)" stroke-width="2" fill="none">
+              <path d="M 200 50 L 200 100" />
+              <path d="M 200 300 L 200 350" />
+              <path d="M 50 200 L 100 200" />
+              <path d="M 300 200 L 350 200" />
+              <path d="M 120 120 L 160 160" />
+              <path d="M 280 120 L 240 160" />
+              <path d="M 120 280 L 160 240" />
+              <path d="M 280 280 L 240 240" />
+            </g>
+            <circle cx="200" cy="200" r="30" fill="#d9a05b" opacity="0.2"/>
+            <circle cx="200" cy="200" r="15" fill="none" stroke="#6fe7dd" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="scroll-cue">
+        <span>SCROLL TO EXPLORE</span>
+        <div class="line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="pad" data-section="about"></div>
+      <div class="eyebrow">01 / Introduction</div>
+      <h2 class="section-title reveal">About Me</h2>
+      
+      <div class="about-grid reveal">
+        <div class="about-copy">
+          <p>
+            I'm a <strong>Sr. Hardware Design Engineer</strong> with a deep passion for power electronics, EVSE (Electric Vehicle Supply Equipment) systems, and pushing the boundaries of what's possible in high-speed, high-power PCB design.
+          </p>
+          <p>
+            My journey spans from foundational electrical engineering principles to leading complex hardware designs from conception through DVT (Design Verification Testing) and compliance. I thrive at the intersection of technical excellence and innovation, where every schematic and layout decision impacts real-world performance.
+          </p>
+          <p>
+            Beyond circuits, I'm fascinated by the cosmos—astrophysics and space exploration fuel my curiosity about the universe. I believe the methodologies that take us to the stars can also illuminate our path to breakthrough engineering solutions.
+          </p>
+          <p>
+            <strong>Core Focus:</strong> Research & Development | Power Electronics Innovation | Multi-layer PCB Design | Compliance & Certification
+          </p>
+        </div>
+        
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-num" id="experienceCounter">4+</div>
+            <div class="stat-label">Years of Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">4+</div>
+            <div class="stat-label">Major Projects</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Passion for Innovation</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">🎯</div>
+            <div class="stat-label">Guided by Dharma</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="education-section">
+
+  <div class="education-heading">
+    <span class="section-kicker">ACADEMIC JOURNEY</span>
+    <h2>Education <span>&amp;</span> Certifications</h2>
+  </div>
+
+  <div class="education-layout">
+
+    <!-- ==========================================
+         LEFT SIDE — YOUR EXISTING EDUCATION CARDS
+         ========================================== -->
+
+    <div class="education-existing">
+
+      <!-- B.Tech -->
+      <div class="edu-card">
+        <h3>B.Tech in Electrical Engineering</h3>
+
+        <div class="edu-meta">
+          2018 – 2022 • AKTU University Lucknow • 8.55 CGPA
+        </div>
+        <p class="journey-tagline">
+            From understanding how things work to engineering what comes next.
+           </p>
+
+        <p>
+          Strong foundation in electrical principles, power systems,
+          electronics, and circuit design. Participated in various
+          projects focusing on power conversion and embedded systems.
+        </p>
+
+        <div class="doc-links">
+          <a
+            class="doc-link"
+            href="YOUR_BTECH_MARKSHEET_LINK"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📄 View B.Tech Marksheet &gt;
+          </a>
+        </div>
+      </div>
+
+
+      <!-- Intermediate -->
+      <div class="edu-card">
+        <h3>Intermediate (Class 12th)</h3>
+
+        <div class="edu-meta">
+          UP Board • 2017 • 88.4%
+        </div>
+          <p class="journey-tagline">
+            Understanding the laws of nature, one question at a time.
+           </p>
+        <p>
+          Completed Intermediate from Mahendra Neelam Janta
+          Inter College, Tirwa, Kannauj, securing 88.4%
+          under the Uttar Pradesh Board.
+        </p>
+
+        <div class="doc-links">
+          <a
+            class="doc-link"
+            href="YOUR_12TH_MARKSHEET_LINK"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📄 View 12th Marksheet &gt;
+          </a>
+        </div>
+      </div>
+
+
+      <!-- High School -->
+      <div class="edu-card">
+        <h3>High School (Class 10th)</h3>
+
+        <div class="edu-meta">
+          UP Board • 2015 • 87.8%
+        </div>
+        <p class="journey-tagline" >
+          Curiosity begins where questions have no limits.
+        </p>
+
+        <p>
+          Completed High School from R.S.P.H. Secondary School,
+          Tirwa, Kannauj, securing 87.8% under the Uttar Pradesh Board.
+        </p>
+        
+        <div class="doc-links">
+          <a
+            class="doc-link"
+            href="YOUR_10TH_MARKSHEET_LINK"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📄 View 10th Marksheet &gt;
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         RIGHT SIDE — VISUAL ACADEMIC JOURNEY
+         ========================================== -->
+
+    <aside class="academic-journey">
+
+      <div class="journey-header">
+        <span>MY JOURNEY</span>
+        <h3>From Foundation<br>to Engineering</h3>
+        <p>
+          Every milestone became a step toward becoming
+          a hardware design engineer.
+        </p>
+      </div>
+
+
+      <div class="journey-line">
+
+
+        <!-- 2015 -->
+        <div class="journey-step">
+
+          <div class="journey-dot">
+            10
+          </div>
+
+          <div class="journey-content">
+
+            <span class="journey-year">
+              2015
+            </span>
+
+            <h4>Academic Foundation</h4>
+
+            <p>
+              High School
+            </p>
+
+            <strong>
+              87.8%
+            </strong>
+
+            <small>
+              UP Board
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- 2017 -->
+        <div class="journey-step">
+
+          <div class="journey-dot">
+            12
+          </div>
+
+          <div class="journey-content">
+
+            <span class="journey-year">
+              2017
+            </span>
+
+            <h4>Higher Secondary</h4>
+
+            <p>
+              Intermediate
+            </p>
+
+            <strong>
+              88.4%
+            </strong>
+
+            <small>
+              UP Board
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <!-- 2022 -->
+        <div class="journey-step active">
+
+          <div class="journey-dot">
+            ⚡
+          </div>
+
+          <div class="journey-content">
+
+            <span class="journey-year">
+              2022
+            </span>
+
+            <h4>Engineering Milestone</h4>
+
+            <p>
+              B.Tech — Electrical Engineering
+            </p>
+
+            <strong>
+              8.55
+            </strong>
+
+            <small>
+              CGPA • AKTU
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- Summary -->
+      <div class="journey-summary">
+
+        <div>
+          <strong>87.8%</strong>
+          <span>10th</span>
+        </div>
+
+        <div>
+          <strong>88.4%</strong>
+          <span>12th</span>
+        </div>
+
+        <div>
+          <strong>8.55</strong>
+          <span>B.Tech</span>
+        </div>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+</section>
+  <!-- PROFESSIONAL JOURNEY & EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="pad" data-section="experience"></div>
+      <div class="eyebrow">04 / Career Trajectory</div>
+      <h2 class="section-title reveal">Professional Journey</h2>
+      <p class="section-sub reveal">From foundational roles to leading complex hardware design initiatives.</p>
+
+      <!-- =========================================================
+     PROFESSIONAL JOURNEY — TWO COLUMN LAYOUT
+     ========================================================= -->
+
+<style>
+
+  /* =========================================================
+     MAIN LAYOUT
+     ========================================================= */
+
+  .career-grid {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.55fr)
+      minmax(320px, 0.85fr);
+
+    gap: 28px;
+
+    align-items: stretch;
+  }
+
+
+  /* =========================================================
+     LEFT SIDE — EXPERIENCE CARDS
+     ========================================================= */
+
+  .career-cards {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+
+  .career-card {
+    position: relative;
+
+    padding: 27px 30px;
+
+    border-radius: 16px;
+
+    background:
+      linear-gradient(
+        145deg,
+        rgba(14, 38, 29, 0.98),
+        rgba(7, 24, 18, 0.98)
+      );
+
+    border:
+      1px solid rgba(110, 145, 129, 0.22);
+
+    overflow: hidden;
+
+    transition:
+      transform 0.35s ease,
+      border-color 0.35s ease,
+      box-shadow 0.35s ease;
+  }
+
+
+  .career-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 3px;
+
+    background:
+      linear-gradient(
+        to bottom,
+        #d8a84e,
+        #79b79d
+      );
+
+    opacity: 0.8;
+  }
+
+
+  .career-card:hover {
+
+    transform: translateY(-4px);
+
+    border-color:
+      rgba(216, 168, 78, 0.45);
+
+    box-shadow:
+      0 20px 55px rgba(0, 0, 0, 0.25);
+  }
+
+
+  .career-card h3 {
+
+    margin: 0;
+
+    font-family:
+      "Space Grotesk",
+      sans-serif;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    color: #edf2ee;
+  }
+
+
+  .career-meta {
+
+    margin-top: 8px;
+
+    font-family:
+      "IBM Plex Mono",
+      monospace;
+
+    font-size: 9px;
+
+    line-height: 1.6;
+
+    letter-spacing: 0.7px;
+
+    color: #d8a84e;
+  }
+
+
+  .career-org {
+
+    margin-top: 5px;
+
+    font-family:
+      "IBM Plex Sans",
+      sans-serif;
+
+    font-size: 11px;
+
+    color: #79b79d;
+  }
+
+
+  .career-card p {
+
+    margin: 16px 0;
+
+    font-family:
+      "IBM Plex Sans",
+      sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    color: #82968c;
+  }
+
+
+  .career-list {
+
+    margin: 15px 0 0;
+
+    padding: 0;
+
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+
+  .career-list li {
+
+    position: relative;
+
+    padding-left: 17px;
+
+    font-family:
+      "IBM Plex Sans",
+      sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.55;
+
+    color: #84988f;
+  }
+
+
+  .career-list li::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: 7px;
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #d8a84e;
+
+    box-shadow:
+      0 0 8px rgba(216, 168, 78, 0.35);
+  }
+
+
+  /* =========================================================
+     RIGHT SIDE — CAREER JOURNEY
+     ========================================================= */
+
+  .career-journey {
+
+    position: relative;
+
+    height: 100%;
+
+    box-sizing: border-box;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background:
+
+      radial-gradient(
+        circle at top right,
+        rgba(216, 168, 78, 0.10),
+        transparent 34%
+      ),
+
+      linear-gradient(
+        145deg,
+        rgba(14, 38, 29, 0.99),
+        rgba(6, 21, 16, 0.99)
+      );
+
+    border:
+      1px solid rgba(216, 168, 78, 0.25);
+
+    box-shadow:
+      0 25px 70px rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+  }
+
+
+  /* Technical background */
+
+  .career-journey::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+
+      linear-gradient(
+        rgba(255,255,255,0.025) 1px,
+        transparent 1px
+      ),
+
+      linear-gradient(
+        90deg,
+        rgba(255,255,255,0.025) 1px,
+        transparent 1px
+      );
+
+    background-size: 27px 27px;
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        black,
+        transparent
+      );
+
+    pointer-events: none;
+  }
+
+
+  /* =========================================================
+     JOURNEY HEADER
+     ========================================================= */
+
+  .career-header {
+
+    position: relative;
+
+    padding-bottom: 22px;
+
+    border-bottom:
+      1px solid rgba(110,145,129,0.16);
+  }
+
+
+  .career-kicker {
+
+    font-family:
+      "IBM Plex Mono",
+      monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color: #d8a84e;
+  }
+
+
+  .career-header h3 {
+
+    margin: 11px 0 9px;
+
+    font-family:
+      "Space Grotesk",
+      sans-serif;
+
+    font-size: 27px;
+
+    line-height: 1.1;
+
+    letter-spacing: -0.8px;
+
+    color: #edf2ee;
+  }
+
+
+  .career-header p {
+
+    margin: 0;
+
+    font-family:
+      "IBM Plex Sans",
+      sans-serif;
+
+    font-size: 11px;
+
+    line-height: 1.65;
+
+    color: #72877d;
+  }
+
+
+  /* =========================================================
+     CAREER TIMELINE
+     ========================================================= */
+
+  .career-timeline {
+
+    position: relative;
+
+    padding: 28px 0 10px;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-evenly;
+  }
+
+
+  /* Vertical line */
+
+  .career-timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 19px;
+
+    top: 35px;
+
+    bottom: 35px;
+
+    width: 1px;
+
+    background:
+
+      linear-gradient(
+        to bottom,
+        rgba(216,168,78,0.65),
+        rgba(121,183,157,0.35),
+        rgba(216,168,78,0.65)
+      );
+  }
+
+
+  /* =========================================================
+     TIMELINE ITEM
+     ========================================================= */
+
+  .career-step {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 40px 1fr;
+
+    gap: 17px;
+
+    margin-bottom: 24px;
+  }
+
+
+  .career-step:last-child {
+
+    margin-bottom: 0;
+  }
+
+
+  /* =========================================================
+     TIMELINE NODE
+     ========================================================= */
+
+  .career-dot {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #092018;
+
+    border:
+      1px solid rgba(216,168,78,0.55);
+
+    box-shadow:
+
+      0 0 0 5px #071811,
+
+      0 0 20px rgba(216,168,78,0.12);
+
+    font-family:
+      "IBM Plex Mono",
+      monospace;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    color: #d8a84e;
+
+    transition: all 0.3s ease;
+  }
+
+
+  .career-step:hover .career-dot {
+
+    background: #d8a84e;
+
+    color: #071811;
+
+    transform: scale(1.08);
+  }
+
+
+  /* Current role */
+
+  .career-step.current .career-dot {
+
+    background: #79b79d;
+
+    color: #071811;
+
+    border-color: #79b79d;
+
+    box-shadow:
+
+      0 0 0 5px #071811,
+
+      0 0 25px rgba(121,183,157,0.35);
+  }
+
+
+  /* =========================================================
+     STEP CONTENT
+     ========================================================= */
+
+  .career-step-content {
+
+    padding-top: 1px;
+  }
+
+
+  .career-year {
+
+    font-family:
+      "IBM Plex Mono",
+      monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 1.2px;
+
+    color: #d8a84e;
+  }
+
+
+  .career-step.current .career-year {
+
+    color: #79b79d;
+  }
+
+
+  .career-step h4 {
+
+    margin: 6px 0 4px;
+
+    font-family:
+      "Space Grotesk",
+      sans-serif;
+
+    font-size: 15px;
+
+    color: #e9eee9;
+  }
+
+
+  /* IMPORTANT — BOLD TAGLINE */
+
+  .career-tagline {
+
+    margin: 5px 0 7px;
+
+    font-family:
+      "Space Grotesk",
+      sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.45;
+
+    color: #e4ebe5;
+  }
+
+
+  .career-step p {
+
+    margin: 0;
+
+    font-family:
+      "IBM Plex Sans",
+      sans-serif;
+
+    font-size: 9.5px;
+
+    line-height: 1.5;
+
+    color: #71867c;
+  }
+
+
+  /* =========================================================
+     ROLE BADGE
+     ========================================================= */
+
+  .career-role-badge {
+
+    display: inline-flex;
+
+    width: fit-content;
+
+    margin-top: 7px;
+
+    padding: 4px 7px;
+
+    border-radius: 4px;
+
+    background:
+      rgba(216,168,78,0.05);
+
+    border:
+      1px solid rgba(216,168,78,0.16);
+
+    font-family:
+      "IBM Plex Mono",
+      monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 0.8px;
+
+    color: #8c9e96;
+  }
+
+
+  .career-step.current .career-role-badge {
+
+    color: #79b79d;
+
+    border-color:
+      rgba(121,183,157,0.28);
+
+    background:
+      rgba(121,183,157,0.05);
+  }
+
+
+  /* =========================================================
+     CAREER SUMMARY
+     ========================================================= */
+
+  .career-summary {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    margin-top: 16px;
+
+    padding-top: 19px;
+
+    border-top:
+      1px solid rgba(110,145,129,0.16);
+  }
+
+
+  .career-stat {
+
+    text-align: center;
+
+    border-right:
+      1px solid rgba(110,145,129,0.13);
+  }
+
+
+  .career-stat:last-child {
+
+    border-right: none;
+  }
+
+
+  .career-stat strong {
+
+    display: block;
+
+    font-family:
+      "Space Grotesk",
+      sans-serif;
+
+    font-size: 18px;
+
+    color: #d8a84e;
+  }
+
+
+  .career-stat span {
+
+    display: block;
+
+    margin-top: 4px;
+
+    font-family:
+      "IBM Plex Mono",
+      monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 0.8px;
+
+    color: #657a70;
+  }
+
+
+  /* =========================================================
+     CURRENT STATUS
+     ========================================================= */
+
+  .career-current {
+
+    position: relative;
+
+    margin-top: 18px;
+
+    padding: 12px 14px;
+
+    border-left:
+      2px solid #79b79d;
+
+    background:
+      rgba(121,183,157,0.035);
+  }
+
+
+  .career-current span {
+
+    font-family:
+      "IBM Plex Mono",
+      monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 1.3px;
+
+    color: #79b79d;
+  }
+
+
+  .career-current p {
+
+    margin: 5px 0 0;
+
+    font-family:
+      "Space Grotesk",
+      sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    line-height: 1.45;
+
+    color: #b5c2bc;
+  }
+
+
+  /* =========================================================
+     RESPONSIVE
+     ========================================================= */
+
+  @media (max-width: 1000px) {
+
+    .career-grid {
+
+      grid-template-columns: 1fr;
+    }
+
+    .career-journey {
+
+      height: auto;
+    }
+
+  }
+
+
+  @media (max-width: 600px) {
+
+    .career-card {
+
+      padding: 24px 22px;
+    }
+
+    .career-journey {
+
+      padding: 24px 20px;
+    }
+
+    .career-header h3 {
+
+      font-size: 24px;
+    }
+
+  }
+
+</style>
+
+
+<!-- =========================================================
+     PROFESSIONAL JOURNEY
+     ========================================================= -->
+
+<div class="career-grid reveal">
+
+
+  <!-- =======================================================
+       LEFT — DETAILED PROFESSIONAL EXPERIENCE
+       ======================================================= -->
+
+  <div class="career-cards">
+
+
+    <!-- =====================================================
+         01 — INTERNSHIP
+         ===================================================== -->
+
+    <div class="career-card">
+
+      <h3>
+        Hardware Design Engineer Intern
+      </h3>
+
+      <div class="career-meta">
+        June 2022 – November 2022
+      </div>
+
+      <div class="career-org">
+        VVDN Technologies • Hardware Engineering
+      </div>
+
+      <p>
+        Started my professional journey by building practical
+        experience in hardware development, PCB design and
+        electronic product engineering.
+      </p>
+
+      <ul class="career-list">
+
+        <li>
+          Assisted with schematic capture, component selection
+          and circuit design activities.
+        </li>
+
+        <li>
+          Developed foundational experience in multi-layer
+          PCB design and layout practices.
+        </li>
+
+        <li>
+          Supported component placement, routing and
+          design documentation.
+        </li>
+
+        <li>
+          Participated in hardware testing, debugging and
+          design verification activities.
+        </li>
+
+        <li>
+          Built practical understanding of EMI/EMC,
+          power electronics and hardware validation.
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <!-- =====================================================
+         02 — HARDWARE DESIGN ENGINEER
+         ===================================================== -->
+
+    <div class="career-card">
+
+      <h3>
+        Hardware Design Engineer
+      </h3>
+
+      <div class="career-meta">
+        November 2022 – September 2025
+      </div>
+
+      <div class="career-org">
+        VVDN Technologies • Hardware Design &amp; Development
+      </div>
+
+      <p>
+        Progressed into independent hardware design ownership,
+        working across complex electronic and power systems
+        while contributing throughout the product lifecycle.
+      </p>
+
+      <ul class="career-list">
+
+        <li>
+          Designed multi-layer PCBs for complex electronic
+          and power systems.
+        </li>
+
+        <li>
+          Owned schematic design, component selection,
+          circuit analysis and PCB layout.
+        </li>
+
+        <li>
+          Worked on EVSE, chargers, inverters and
+          embedded hardware platforms.
+        </li>
+
+        <li>
+          Supported EMI/EMC analysis, debugging,
+          validation and compliance-oriented design.
+        </li>
+
+        <li>
+          Collaborated with cross-functional teams during
+          prototype development and testing.
+        </li>
+
+        <li>
+          Contributed to design reviews, documentation
+          and hardware verification.
+        </li>
+
+      </ul>
+
+    </div>
+
+
+    <!-- =====================================================
+         03 — SENIOR HARDWARE DESIGN ENGINEER
+         ===================================================== -->
+
+    <div class="career-card">
+
+      <h3>
+        Sr. Hardware Design Engineer
+      </h3>
+
+      <div class="career-meta">
+        October 2025 – Present
+      </div>
+
+      <div class="career-org">
+        VVDN Technologies • Senior Hardware Design
+      </div>
+
+      <p>
+        Taking greater ownership of hardware architecture,
+        technical decisions, product development and
+        engineering problem solving.
+      </p>
+
+      <ul class="career-list">
+
+        <li>
+          Driving hardware design activities across the
+          complete product development lifecycle.
+        </li>
+
+        <li>
+          Leading schematic architecture, PCB design,
+          component selection and optimization.
+        </li>
+
+        <li>
+          Working on power electronics, EVSE, charging
+          and embedded hardware systems.
+        </li>
+
+        <li>
+          Driving hardware debugging, validation,
+          design reviews and technical problem solving.
+        </li>
+
+        <li>
+          Supporting EMI/EMC and regulatory compliance
+          activities.
+        </li>
+
+        <li>
+          Contributing to technical decisions, documentation,
+          design improvements and knowledge sharing.
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       RIGHT — PROFESSIONAL JOURNEY
+       ======================================================= -->
+
+  <aside class="career-journey">
+
+
+    <!-- HEADER -->
+
+    <div class="career-header">
+
+      <span class="career-kicker">
+        PROFESSIONAL JOURNEY
+      </span>
+
+      <h3>
+        From Learning<br>
+        to Leadership
+      </h3>
+
+      <p>
+        A continuous journey of learning, designing,
+        solving problems and taking greater ownership
+        of hardware engineering.
+      </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         TIMELINE
+         ===================================================== -->
+
+    <div class="career-timeline">
+
+
+      <!-- 2022 — INTERN -->
+
+      <div class="career-step">
+
+        <div class="career-dot">
+          01
+        </div>
+
+        <div class="career-step-content">
+
+          <span class="career-year">
+            JUNE 2022
+          </span>
+
+          <h4>
+            Starting the Journey
+          </h4>
+
+          <p class="career-tagline">
+            Learn the fundamentals. Question everything.
+          </p>
+
+          <p>
+            Hardware Design Engineer Intern
+            • VVDN Technologies
+          </p>
+
+          <span class="career-role-badge">
+            FOUNDATION
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- 2022 — HARDWARE DESIGN -->
+
+      <div class="career-step">
+
+        <div class="career-dot">
+          02
+        </div>
+
+        <div class="career-step-content">
+
+          <span class="career-year">
+            NOVEMBER 2022
+          </span>
+
+          <h4>
+            Building Expertise
+          </h4>
+
+          <p class="career-tagline">
+            Turn concepts into reliable engineering.
+          </p>
+
+          <p>
+            Hardware Design Engineer
+            • VVDN Technologies
+          </p>
+
+          <span class="career-role-badge">
+            DESIGN &amp; DEVELOPMENT
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- 2025 — SENIOR -->
+
+      <div class="career-step current">
+
+        <div class="career-dot">
+          03
+        </div>
+
+        <div class="career-step-content">
+
+          <span class="career-year">
+            OCTOBER 2025
+          </span>
+
+          <h4>
+            Taking Greater Ownership
+          </h4>
+
+          <p class="career-tagline">
+            Engineer solutions. Lead with precision.
+          </p>
+
+          <p>
+            Sr. Hardware Design Engineer
+            • VVDN Technologies
+          </p>
+
+          <span class="career-role-badge">
+            CURRENT ROLE
+          </span>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         CAREER SUMMARY
+         ===================================================== -->
+
+    <div class="career-summary">
+
+      <div class="career-stat">
+
+        <strong>3+</strong>
+
+        <span>
+          CAREER STAGES
+        </span>
+
+      </div>
+
+
+      <div class="career-stat">
+
+        <strong>4+</strong>
+
+        <span>
+          YEARS
+        </span>
+
+      </div>
+
+
+      <div class="career-stat">
+
+        <strong>∞</strong>
+
+        <span>
+          LEARNING
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CURRENT STATUS
+         ===================================================== -->
+
+    <div class="career-current">
+
+      <span>
+        CURRENT FOCUS
+      </span>
+
+      <p>
+        Hardware Architecture • PCB Design • Power Electronics
+        • EVSE • EMI/EMC • Product Development
+      </p>
+
+    </div>
+
+
+  </aside>
+
+</div>
+  </section>
+
+  <!-- KEY COMMUNICATION INTERFACES -->
+  <section id="interfaces">
+    <div class="wrap">
+      <div class="eyebrow">05 / Technical Interfaces</div>
+      <h2 class="section-title reveal">High-Speed &amp; Low-Speed Communication</h2>
+      <p class="section-sub reveal">Core interfaces and protocols in modern power electronics systems.</p>
+
+      <div class="interfaces-grid reveal">
+        <div class="interface-card">
+          <h3>🚀 High-Speed Interfaces</h3>
+          <ul>
+            <li>PCIe (PCI Express) - Multi-lane configurations</li>
+            <li>USB 3.0/3.1/3.2 - High-speed data transfer</li>
+            <li>LVDS (Low Voltage Differential Signaling)</li>
+            <li>MIPI CSI/DSI - Mobile industry protocols</li>
+            <li>Ethernet (1GbE, 10GbE) - Network communication</li>
+            <li>Differential signaling with impedance matching</li>
+          </ul>
+        </div>
+
+        <div class="interface-card">
+          <h3>🔗 Low-Speed Interfaces</h3>
+          <ul>
+            <li>I²C (Inter-Integrated Circuit) - 100kHz to 400kHz</li>
+            <li>SPI (Serial Peripheral Interface) - Synchronous communication</li>
+            <li>UART/RS-232/RS-485 - Serial protocols</li>
+            <li>CAN Bus - Automotive communication</li>
+            <li>GPIO (General Purpose Input/Output)</li>
+            <li>Modbus - Industrial protocol</li>
+          </ul>
+        </div>
+
+        <div class="interface-card">
+          <h3>⚡ Power & Signal Integrity</h3>
+          <ul>
+            <li>PDN (Power Distribution Network) design</li>
+            <li>Impedance control (50Ω, 75Ω, 100Ω differential)</li>
+            <li>Via stitching and layer stackup optimization</li>
+            <li>EMI/EMC suppression techniques</li>
+            <li>Ground plane strategies</li>
+            <li>Crosstalk mitigation and signal routing</li>
+          </ul>
+        </div>
+
+        <div class="interface-card">
+          <h3>🔋 Power Management</h3>
+          <ul>
+            <li>Multi-rail power delivery systems</li>
+            <li>DC-DC converters and buck/boost topologies</li>
+            <li>Battery management systems (BMS)</li>
+            <li>Thermal design and heat dissipation</li>
+            <li>Inrush current management</li>
+            <li>Protection circuits (OVP, UVP, OCP)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="pad" data-section="projects"></div>
+      <div class="eyebrow">06 / Case Studies</div>
+      <h2 class="section-title reveal">Major Projects &amp; Achievements</h2>
+      <p class="section-sub reveal">Designs that matter. Impact at scale.</p>
+
+      <div class="project-grid reveal">
+        <!-- 5G Radio Unit -->
+        <div class="pcard">
+          <div class="pcard-head">
+            <div class="pcard-title">5G Radio Unit (N78)</div>
+            <div class="pcard-dur">2022 – 2023</div>
+          </div>
+          <div class="pcard-industry">Telecom & 5G Infrastructure</div>
+
+          <div class="pcard-block">
+            <h4>Project Overview</h4>
+            <p>Engineered a 5G radio unit operating on the N78 frequency band featuring 8 transmitters and 8 receivers based on TDD (Time Division Duplex) methodology. This project encompassed complete design verification and compliance certification.</p>
+          </div>
+
+          <div class="pcard-block">
+            <h4>Technical Achievements</h4>
+            <ul>
+              <li>Designed multi-layer PCB with high-speed RF traces and impedance control</li>
+              <li>Optimized power distribution for 8×8 MIMO architecture</li>
+              <li>Implemented advanced thermal management for continuous operation</li>
+              <li>DVT (Design Verification Testing) — validated all functional and RF specifications</li>
+              <li>Compliance certification preparation — met regulatory standards</li>
+              <li>Design support throughout manufacturing and production phases</li>
+            </ul>
+          </div>
+
+          <div class="tech-badges">
+            <span class="badge">Altium Designer</span>
+            <span class="badge">RF Design</span>
+            <span class="badge">MIMO</span>
+            <span class="badge">N78 Band</span>
+            <span class="badge">TDD</span>
+            <span class="badge">DVT</span>
+          </div>
+
+          <div class="pcard-reflection">
+            <h4>Key Learning</h4>
+            <p>"Mastering RF design taught me that precision in PCB layout is as critical as circuit theory. Every trace, via, and ground connection influences system performance."</p>
+          </div>
+        </div>
+
+        <!-- V2L Inverter -->
+        <div class="pcard">
+          <div class="pcard-head">
+            <div class="pcard-title">V2L Inverter System</div>
+            <div class="pcard-dur">2023 – 2024</div>
+          </div>
+          <div class="pcard-industry">Vehicle-to-Load & Power Conversion</div>
+
+          <div class="pcard-block">
+            <h4>Project Overview</h4>
+            <p>Developed a Vehicle-to-Load (V2L) inverter enabling vehicles to supply power to external devices. This bidirectional charging solution bridges vehicle and external load ecosystems using advanced power conversion.</p>
+          </div>
+
+          <div class="pcard-block">
+            <h4>Technical Achievements</h4>
+            <ul>
+              <li>Schematic design in OrCAD with comprehensive power stage optimization</li>
+              <li>Multi-layer PCB design with signal integrity and thermal considerations</li>
+              <li>PCB design review and layout optimization for manufacturing</li>
+              <li>PRD (Product Requirements Document) development and validation</li>
+              <li>HDD (Hardware Design Document) creation for production handoff</li>
+              <li>DVT report preparation and compliance testing coordination</li>
+              <li>Owned design from proof-of-concept (PoC) through customer shipment</li>
+            </ul>
+          </div>
+
+          <div class="tech-badges">
+            <span class="badge">OrCAD</span>
+            <span class="badge">PCB Layout</span>
+            <span class="badge">Power Electronics</span>
+            <span class="badge">Inverter Design</span>
+            <span class="badge">V2L</span>
+            <span class="badge">Design Review</span>
+          </div>
+
+          <div class="pcard-reflection">
+            <h4>Key Learning</h4>
+            <p>"End-to-end ownership of a product teaches you that great design bridges engineering and customer needs. Every spec, review, and document serves the ultimate user."</p>
+          </div>
+        </div>
+
+        <!-- Wall Mount Charger -->
+        <div class="pcard">
+          <div class="pcard-head">
+            <div class="pcard-title">11.5kW Wall Mount Charger</div>
+            <div class="pcard-dur">2024 – 2025</div>
+          </div>
+          <div class="pcard-industry">EVSE & Mass Production</div>
+
+          <div class="pcard-block">
+            <h4>Project Overview</h4>
+            <p>Designed and led production transition for an 11.5kW wall-mounted EVSE charger. As the primary hardware designer, I orchestrated the entire design-to-production journey including compliance and manufacturing support.</p>
+          </div>
+
+          <div class="pcard-block">
+            <h4>Design Responsibilities</h4>
+            <ul>
+              <li><strong>Schematic Design:</strong> Complete power stage, control circuits, and protection mechanisms in OrCAD</li>
+              <li><strong>PCB Layout:</strong> Multi-layer design with emphasis on thermal dissipation and high-current routing</li>
+              <li><strong>Design Review:</strong> Comprehensive review for manufacturability and compliance</li>
+              <li><strong>Documentation:</strong> PRD, HDD, DVT reports, and EMI/EMC compliance certification</li>
+              <li><strong>Production Leadership:</strong> Led design from ideation through full production ramp</li>
+              <li><strong>Compliance:</strong> Ensured adherence to IEC 61851 and regional EVSE standards</li>
+            </ul>
+          </div>
+
+          <div class="tech-badges">
+            <span class="badge">11.5kW</span>
+            <span class="badge">EVSE</span>
+            <span class="badge">Mass Production</span>
+            <span class="badge">IEC 61851</span>
+            <span class="badge">EMI/EMC</span>
+            <span class="badge">Hardware Design</span>
+          </div>
+
+          <div class="pcard-reflection">
+            <h4>Key Learning</h4>
+            <p>"Mass production demands that design excellence extends beyond the first prototype. DFM (Design for Manufacturing), quality, and field reliability become equally important as innovation."</p>
+          </div>
+        </div>
+
+        <!-- UL-Based Charger -->
+        <div class="pcard">
+          <div class="pcard-head">
+            <div class="pcard-title">UL-Compliant EVSE Charger</div>
+            <div class="pcard-dur">2025 – Present</div>
+          </div>
+          <div class="pcard-industry">Regulatory-Driven Design</div>
+
+          <div class="pcard-block">
+            <h4>Project Overview</h4>
+            <p>Scoping and developing a UL-standard compliant charger from the ground up. This next-generation EVSE is being designed with regulatory certification as a core requirement, not an afterthought.</p>
+          </div>
+
+          <div class="pcard-block">
+            <h4>Current Scope</h4>
+            <ul>
+              <li>Comprehensive specification development aligned with UL 2089 and UL 2202</li>
+              <li>Circuit design with built-in safety margins and redundancy</li>
+              <li>PCB architecture optimized for high-reliability applications</li>
+              <li>Compliance planning integrated into design phase</li>
+              <li>Testing strategy alignment with regulatory requirements</li>
+            </ul>
+          </div>
+
+          <div class="tech-badges">
+            <span class="badge">UL 2089</span>
+            <span class="badge">UL 2202</span>
+            <span class="badge">EVSE</span>
+            <span class="badge">Compliance</span>
+            <span class="badge">Safety</span>
+          </div>
+
+          <div class="pcard-reflection">
+            <h4>Vision</h4>
+            <p>"UL compliance isn't a constraint—it's a catalyst for superior design. Building safety, reliability, and user trust into every circuit is the hallmark of professional engineering."</p>
+          </div>
+        </div>
+
+        <!-- AGD Project (Advanced Grid Device) -->
+        <div class="pcard">
+          <div class="pcard-head">
+            <div class="pcard-title">AGD: Advanced Grid Device</div>
+            <div class="pcard-dur">2025 → Future</div>
+          </div>
+          <div class="pcard-industry">Next-Generation Grid Management</div>
+
+          <div class="pcard-block">
+            <h4>Project Vision</h4>
+            <p>My current passion project and next frontier—the AGD (Advanced Grid Device). This revolutionary system will integrate Vehicle-to-Grid (V2G), Grid-to-Vehicle (G2V), and Solar-to-Grid (S2G) capabilities in a single, intelligent hardware platform.</p>
+          </div>
+
+          <div class="pcard-block">
+            <h4>Core Objectives</h4>
+            <ul>
+              <li><strong>V2G (Vehicle-to-Grid):</strong> Enable EVs to feed power back to the grid during peak demand</li>
+              <li><strong>G2V (Grid-to-Vehicle):</strong> Intelligent vehicle charging optimized for grid stability</li>
+              <li><strong>S2G (Solar-to-Grid):</strong> Direct solar array integration for distributed renewable energy</li>
+              <li><strong>Power Management:</strong> Multi-directional power flow with <strong>8+ transmitters and 8+ receivers</strong> for maximum flexibility</li>
+              <li><strong>Protection & Intelligence:</strong> Overcurrent, overvoltage, and thermal protection with grid-aware algorithms</li>
+            </ul>
+          </div>
+
+          <div class="tech-badges">
+            <span class="badge">V2G</span>
+            <span class="badge">G2V</span>
+            <span class="badge">S2G</span>
+            <span class="badge">Grid Integration</span>
+            <span class="badge">Renewable Energy</span>
+            <span class="badge">Future Vision</span>
+          </div>
+
+          <div class="pcard-reflection">
+            <h4>The Big Picture</h4>
+            <p>"The AGD represents my ultimate vision—a device that bridges personal transportation, renewable energy, and grid infrastructure. It's the convergence of everything I've learned in power electronics, scaled for global impact on sustainable energy."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS & EXPERTISE -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="pad" data-section="skills"></div>
+      <div class="eyebrow">07 / Technical Arsenal</div>
+      <h2 class="section-title reveal">Skills &amp; Expertise</h2>
+
+      <div class="skill-groups reveal">
+        <div class="skill-group">
+          <h3>🔧 Design Tools</h3>
+          <div class="skill-pills">
+            <span class="pill">OrCAD (Schematic &amp; PCB)</span>
+            <span class="pill">Altium Designer</span>
+            <span class="pill">PADS</span>
+            <span class="pill">KiCAD</span>
+            <span class="pill">SPICE Simulation</span>
+            <span class="pill">LTspice</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>⚡ Power Electronics</h3>
+          <div class="skill-pills">
+            <span class="pill">DC-DC Converters</span>
+            <span class="pill">AC-DC Power Supplies</span>
+            <span class="pill">Inverter Design</span>
+            <span class="pill">MOSFET &amp; IGBT</span>
+            <span class="pill">Gate Drivers</span>
+            <span class="pill">Thermal Management</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>🎯 High-Speed PCB Design</h3>
+          <div class="skill-pills">
+            <span class="pill">Impedance Control</span>
+            <span class="pill">Signal Integrity</span>
+            <span class="pill">Multi-layer Stackup</span>
+            <span class="pill">Via Stitching</span>
+            <span class="pill">Length Matching</span>
+            <span class="pill">Differential Pairs</span>
+            <span class="pill">DDR/LVDS</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>📡 Communication Protocols</h3>
+          <div class="skill-pills">
+            <span class="pill">I²C &amp; SPI</span>
+            <span class="pill">UART/RS-485</span>
+            <span class="pill">CAN Bus</span>
+            <span class="pill">Ethernet</span>
+            <span class="pill">USB 3.0/3.1</span>
+            <span class="pill">PCIe</span>
+            <span class="pill">MIPI</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>🛡️ Compliance &amp; Testing</h3>
+          <div class="skill-pills">
+            <span class="pill">EMI/EMC Design</span>
+            <span class="pill">IEC 61851 (EVSE)</span>
+            <span class="pill">UL Standards</span>
+            <span class="pill">DVT Planning</span>
+            <span class="pill">Thermal Testing</span>
+            <span class="pill">Safety Analysis</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>📊 Documentation</h3>
+          <div class="skill-pills">
+            <span class="pill">PRD (Product Req.)</span>
+            <span class="pill">HDD (Hardware Design)</span>
+            <span class="pill">DVT Reports</span>
+            <span class="pill">Test Plans</span>
+            <span class="pill">Design Reviews</span>
+            <span class="pill">Compliance Docs</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>🚀 Advanced Topics</h3>
+          <div class="skill-pills">
+            <span class="pill">RF Design</span>
+            <span class="pill">MIMO Architecture</span>
+            <span class="pill">High-Power Layout</span>
+            <span class="pill">Thermal Simulation</span>
+            <span class="pill">Manufacturing Support</span>
+            <span class="pill">Design for Manufacturability (DFM)</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <h3>🌐 Industry Domains</h3>
+          <div class="skill-pills">
+            <span class="pill">EVSE &amp; EV Charging</span>
+            <span class="pill">5G &amp; Telecom</span>
+            <span class="pill">Renewable Energy</span>
+            <span class="pill">Power Electronics</span>
+            <span class="pill">Industrial IoT</span>
+            <span class="pill">Grid Integration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY TIMELINE -->
+  <section id="timeline">
+    <div class="wrap">
+      <div class="eyebrow">08 / Milestones</div>
+      <h2 class="section-title reveal">Career Milestones</h2>
+      <p class="section-sub reveal">A visual journey through key moments and achievements.</p>
+      
+      <div class="journey reveal">
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <div class="yr">2018–2022</div>
+          <h4>B.Tech Education</h4>
+          <p>Electrical engineering foundation at Kanpur University.</p>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <div class="yr">Nov 2022</div>
+          <h4>First Hardware Role</h4>
+          <p>Internship entry into hardware design—learning OrCAD and PCB fundamentals.</p>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <div class="yr">2023</div>
+          <h4>5G Radio Unit</h4>
+          <p>First major project—5G N78 band radio unit with DVT completion.</p>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <div class="yr">2023–2024</div>
+          <h4>V2L Inverter</h4>
+          <p>Owned end-to-end design from PoC to customer shipment.</p>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <div class="yr">2024–2025</div>
+          <h4>11.5kW EVSE</h4>
+          <p>Transition to mass production—full design ownership and compliance leadership.</p>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <div class="yr">2025+</div>
+          <h4>UL Charger &amp; AGD</h4>
+          <p>Next-gen compliance-first design and the ambitious AGD vision.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME SECTION -->
+  <section id="resume">
+    <div class="wrap">
+      <div class="pad" data-section="resume"></div>
+      <div class="eyebrow">09 / Full Profile</div>
+      <h2 class="section-title reveal">Resume</h2>
+      <div class="resume-card reveal">
+        <div>
+          <h3 style="font-size:20px; margin-bottom:6px;">Professional Snapshot</h3>
+          <p style="color:var(--muted); font-size:14px;">A compact overview — full details in the downloadable PDF.</p>
+          <div class="resume-snapshot">
+            <div>Name<span>Ankit Dubey</span></div>
+            <div>Title<span>Sr. Hardware Design Engineer</span></div>
+            <div>Experience<span id="experienceText">4+ Years</span></div>
+            <div>Focus<span>R&D & Innovation</span></div>
+            <div>Domain<span>EVSE, Power Electronics & 5G</span></div>
+            <div>Education<span>B.Tech, Electrical Engineering</span></div>
+          </div>
+        </div>
+        <div class="resume-actions">
+          <a href="#" class="btn btn-primary" onclick="alert('Add your resume PDF download link here')">⬇ Download Resume</a>
+          <a href="https://linkedin.com/in/ankitdubey07" target="_blank" rel="noopener" class="btn btn-ghost">View on LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="pad" data-section="contact"></div>
+      <div class="eyebrow">10 / Reach Out</div>
+      <h2 class="section-title reveal">Let's Connect</h2>
+      <p class="section-sub reveal">Open to collaborations, projects, and conversations on hardware innovation, power electronics, and the cosmos.</p>
+
+      <div class="contact-grid reveal">
+        <a class="contact-card" href="mailto:ankitdubey2680@gmail.com">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">ankitdubey2680@gmail.com</div>
+          </div>
+        </a>
+        <a class="contact-card" href="https://linkedin.com/in/ankitdubey07" target="_blank" rel="noopener">
+          <div class="contact-icon">🔗</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/ankitdubey07</div>
+          </div>
+        </a>
+        <a class="contact-card" href="tel:+916387285228">
+          <div class="contact-icon">☎</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+91 63872 85228</div>
+          </div>
+        </a>
+        <a class="contact-card" href="https://instagram.com" target="_blank" rel="noopener">
+          <div class="contact-icon">📷</div>
+          <div>
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">@ankit_dubey [Add link]</div>
+          </div>
+        </a>
+        <a class="contact-card" href="https://wa.me/916387285228" target="_blank" rel="noopener">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+91 63872 85228</div>
+          </div>
+        </a>
+        <a class="contact-card" href="https://facebook.com" target="_blank" rel="noopener">
+          <div class="contact-icon">f</div>
+          <div>
+            <div class="contact-label">Facebook</div>
+            <div class="contact-value">facebook.com/ankit_dubey [Add link]</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">Designed &amp; built by Ankit Dubey — Sr. Hardware Design Engineer | Pioneering innovation in power electronics and EVSE solutions.</div>
+</footer>
+
+<script>
+  // ===== EXPERIENCE COUNTER (Auto-Update Monthly) =====
+  function updateExperienceCounter() {
+    const startDate = new Date(2022, 6, 15); // June 15, 2026
+    const today = new Date();
+    const totalMonths = (today.getFullYear() - startDate.getFullYear()) * 12 + (today.getMonth() - startDate.getMonth());
+    const years = Math.floor(totalMonths / 12);
+    const months = totalMonths % 12;
+    
+    const displayText = years > 0 ? `${years}${months > 0 ? '+' : ''}` : `${months}m`;
+    document.getElementById('experienceCounter').textContent = displayText;
+    document.getElementById('experienceText').textContent = `${years}+ Years`;
+  }
+  updateExperienceCounter();
+
+  // ===== MOBILE NAV TOGGLE =====
+  const navToggle = document.getElementById('navToggle');
+  const navList = document.getElementById('navList');
+  navToggle.addEventListener('click', () => {
+    const open = navList.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navList.classList.remove('open');
+    navToggle.setAttribute('aria-expanded','false');
+  }));
+
+  // ===== HEADER SCROLL STATE =====
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive:true});
+
+  // ===== REVEAL ON SCROLL =====
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+
+  // ===== SCROLLSPY FOR NAV + RAIL PADS =====
+  const navLinks = document.querySelectorAll('[data-nav]');
+  const pads = document.querySelectorAll('.pad');
+  const sections = document.querySelectorAll('section[id]');
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.id;
+      if(entry.isIntersecting){
+        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+        pads.forEach(p => p.classList.toggle('lit', p.dataset.section === id));
+      }
+    });
+  }, {rootMargin:'-40% 0px -50% 0px'});
+  sections.forEach(s => spy.observe(s));
+
+  // ===== POSITION RAIL PADS =====
+  function positionPads(){
+    const rail = document.getElementById('rail');
+    if(!rail || window.innerWidth < 1280) return;
+    document.querySelectorAll('.pad').forEach(pad => {
+      const section = document.getElementById(pad.dataset.section);
+      if(section){
+        const top = section.getBoundingClientRect().top + window.scrollY;
+        pad.style.top = (top - rail.getBoundingClientRect().top - window.scrollY + 4) + 'px';
+      }
+    });
+  }
+  window.addEventListener('load', positionPads);
+  window.addEventListener('resize', positionPads);
+</script>
+
+</body>
+</html>
