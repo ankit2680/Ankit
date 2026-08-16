@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ankit Dubey - Bio Data</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
+        body {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: flex-start;
+
+            padding: 40px 20px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 10%,
+                    rgba(184, 132, 46, 0.10),
+                    transparent 35%
+                ),
+                #050505;
+
+            color: #eeeeee;
+
+            font-family: "Inter", Arial, sans-serif;
+        }
+
+
+        /* =====================================================
+           MAIN BIODATA CARD
+        ===================================================== */
+
+        .biodata-card {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 850px;
+
+            min-height: 1100px;
+
+            padding: 50px 65px 55px;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.025),
+                    rgba(255,255,255,0.005)
+                ),
+                #0b0b0b;
+
+            border: 1px solid rgba(202, 150, 65, 0.65);
+
+            box-shadow:
+
+                0 25px 80px rgba(0,0,0,0.8),
+
+                inset 0 0 80px rgba(200,145,50,0.025);
+        }
+
+
+        /* =====================================================
+           INNER GOLD BORDER
+        ===================================================== */
+
+        .biodata-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 8px;
+
+            border: 1px solid rgba(202,150,65,0.18);
+
+            pointer-events: none;
+
+            z-index: 10;
+        }
+
+
+        /* =====================================================
+           TOP CORNER OM
+        ===================================================== */
+
+        .corner-decoration {
+
+            position: absolute;
+
+            right: -12px;
+
+            top: -18px;
+
+            font-family: "Noto Serif Devanagari", serif;
+
+            font-size: 62px;
+
+            color: rgba(215,160,65,0.75);
+
+            transform: rotate(-15deg);
+
+            z-index: 3;
+        }
+
+
+        /* =====================================================
+           GANESH / OM WATERMARK
+        ===================================================== */
+
+        .watermark {
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 53%;
+
+            transform: translate(-50%, -50%);
+
+            width: 500px;
+
+            text-align: center;
+
+            pointer-events: none;
+
+            z-index: 1;
+
+            opacity: 0.055;
+
+            color: #d6a34b;
+        }
+
+
+        .watermark-om {
+
+            font-family: "Noto Serif Devanagari", serif;
+
+            font-size: 260px;
+
+            line-height: 0.8;
+
+            font-weight: 400;
+        }
+
+
+        .watermark-text {
+
+            margin-top: 25px;
+
+            font-family: "Noto Serif Devanagari", serif;
+
+            font-size: 25px;
+
+            letter-spacing: 3px;
+
+            white-space: nowrap;
+        }
+
+
+        /* =====================================================
+           HEADER MANTRA
+        ===================================================== */
+
+        .top-mantra {
+
+            position: relative;
+
+            z-index: 3;
+
+            margin-bottom: 30px;
+
+            text-align: center;
+
+            color: #d59b38;
+
+            font-family: "Noto Serif Devanagari", serif;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .bio-header {
+
+            position: relative;
+
+            z-index: 3;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            padding-bottom: 5px;
+
+            border-bottom: none;
+        }
+        
+         
+
+        .small-title {
+
+            margin-bottom: px;
+
+            color: #999999;
+
+            font-size: 11px;
+
+            letter-spacing: 3px;
+
+            font-weight: 600;
+        }
+
+        
+/* Subtitle */
+.subtitle {
+    margin-top: 7px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #e0a53a;
+}
+
+/* Description */
+.bio-description {
+    margin: 12px 0 12px 0;
+    max-width: 390px;
+    color: #d29a32;
+    font-weight: 600;
+    font-family: Arial, sans-serif;
+    font-size: 11.5px;
+    line-height: 1.55;
+    letter-spacing: 0.3px;
+    text-align: justify;
+
+    color: #c8c8c8;
+}
+
+Log in
+Sign up for free
+You said:
+image.png
+
+I want to add sub title below my name Sr. hardware design engineer with below discrption to fullfull my space Architecting next-generation power electronics and EVSE solutions with precision. Pioneering innovation where circuits meet compliance and ambition meets execution.
+
+🚀 Research & Development
+⚡ Power Electronics
+🌌 Astrophysics
+
+Please provide me the HTML and css code
+
+ChatGPT said:
+Absolutely. Based on your screenshot, I’d place the subtitle directly below Ankit Dubey, followed by a compact description and the three specialization lines. This keeps the existing black/gold aesthetic and fills the empty space naturally.
+
+HTML
+<div class="bio-header">
+    <div class="bio-text">
+        <div class="bio-label">BIO DATA</div>
+
+        <h1>Ankit Dubey</h1>
+
+        <div class="subtitle">Sr. Hardware Design Engineer</div>
+
+        <p class="bio-description">
+            Architecting next-generation power electronics and EVSE solutions
+            with precision. Pioneering innovation where circuits meet compliance
+            and ambition meets execution.
+        </p>
+
+        <div class="expertise">
+            <div><span class="icon">🚀</span> Research &amp; Development</div>
+            <div><span class="icon">⚡</span> Power Electronics</div>
+            <div><span class="icon">🌌</span> Astrophysics</div>
+        </div>
+    </div>
+
+    <div class="profile-image">
+        <img src="your-image.jpg" alt="Ankit Dubey">
+    </div>
+</div>
+
+
+CSS
+/* Main bio header */
+.bio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding-top: 15px;
+    box-sizing: border-box;
+}
+
+/* Left content */
+.bio-text {
+    max-width: 430px;
+}
+
+/* BIO DATA */
+.bio-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: #b9c4ce;
+    margin-bottom: 4px;
+}
+
+/* Name */
+.bio-text h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #c38b2c;
+    line-height: 1.1;
+}
+
+/* Subtitle */
+.subtitle {
+    margin-top: 7px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #e0a53a;
+}
+
+/* Description */
+.bio-description {
+    margin: 12px 0 12px 0;
+    max-width: 410px;
+
+    font-family: Arial, sans-serif;
+    font-size: 11.5px;
+    line-height: 1.55;
+    letter-spacing: 0.3px;
+
+    color: #c8c8c8;
+}
+
+/* Expertise section */
+.expertise {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: #d5d5d5;
+}
+
+/* Icons */
+.expertise .icon {
+    display: inline-block;
+    width: 22px;
+    font-size: 13px;
+}
+
+/* Image container */
+.profile-image {
+    width: 105px;
+    height: 130px;
+    border: 1px solid #c38b2c;
+    margin-top: 0;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Profile image */
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+If you want it to look even closer to your screenshot
+Use this slightly more compact version of the description:
+
+<p class="bio-description">
+    Architecting next-generation <strong>power electronics &amp; EVSE</strong>
+    solutions with precision. Pioneering innovation where circuits meet
+    compliance and ambition meets execution.
+</p>
+
+
+And add:
+
+.bio-description strong {
+    color: #d29a32;
+    font-weight: 600;
+}
+
+.expertise {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 22px;
+    margin-top: 12px;
+
+    font-family: Arial, sans-serif;
+    font-size: 10.5px;
+    color: #d5d5d5;
+    white-space: nowrap;
+}
+
+.expertise > div {
+    display: flex;
+    align-items: center;
+}
+
+.expertise .icon {
+    margin-right: 5px;
+    font-size: 13px;
+}
+
+        .bio-header h1 {
+
+            color: #d9a64d;
+
+            font-family: "Cormorant Garamond", Georgia, serif;
+
+            font-size: 36px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        /* =====================================================
+           PROFILE PHOTO
+        ===================================================== */
+
+        .profile-photo {
+
+            width: 180px;
+
+            height: 210px;
+
+            padding: 4px;
+
+            background: #111111;
+
+            border: 1px solid #c7923d;
+
+            box-shadow:
+
+                0 0 0 2px rgba(199,146,61,0.08),
+
+                0 10px 30px rgba(0,0,0,0.5);
+        }
+
+
+        .profile-photo img {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+        }
+
+
+        /* =====================================================
+           SECTIONS
+        ===================================================== */
+
+        .section {
+
+            position: relative;
+
+            z-index: 3;
+
+            padding: 25px 0;
+
+            border-bottom: 1px solid rgba(205,153,65,0.35);
+        }
+
+
+        .experience-section {
+
+            padding-top: 23px;
+        }
+
+
+        /* =====================================================
+           SECTION TITLES
+        ===================================================== */
+
+        .section h2 {
+
+            margin-bottom: 15px;
+
+            color: #d59b3c;
+
+            font-family: "Cormorant Garamond", Georgia, serif;
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.3px;
+        }
+
+
+        /* =====================================================
+           INFORMATION ROW
+        ===================================================== */
+
+        .info-row {
+
+            display: grid;
+
+            grid-template-columns: 145px 20px 1fr;
+
+            align-items: start;
+
+            margin-bottom: 10px;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            transition: 0.2s ease;
+        }
+
+
+        .info-row:last-child {
+
+            margin-bottom: 0;
+        }
+
+
+        .label {
+
+            color: #a8a8a8;
+
+            font-weight: 500;
+        }
+
+
+        .colon {
+
+            color: #c89542;
+
+            text-align: center;
+
+            font-weight: 600;
+        }
+
+
+        .value {
+
+            color: #e6e6e6;
+
+            font-weight: 400;
+        }
+
+
+        /* =====================================================
+           HOVER EFFECT
+        ===================================================== */
+
+        .info-row:hover .label {
+
+            color: #d7a44c;
+        }
+
+
+        .info-row:hover .value {
+
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           CONTACT SECTION
+        ===================================================== */
+
+        .contact-section {
+
+            border-bottom: none;
+
+            padding-bottom: 0;
+        }
+
+
+        .contact-section::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -1px;
+
+            width: 80px;
+
+            height: 2px;
+
+            background: #c89542;
+        }
+
+
+        /* =====================================================
+           DECORATIVE GOLD LINE
+        ===================================================== */
+
+        .gold-line {
+
+            width: 100%;
+
+            height: 1px;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #c89542,
+                transparent
+            );
+
+            margin: 10px 0;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+
+            .biodata-card {
+
+                padding: 35px 25px 40px;
+
+                min-height: auto;
+            }
+
+
+            .bio-header {
+
+                gap: 20px;
+            }
+
+
+            .bio-header h1 {
+
+                font-size: 30px;
+            }
+
+
+            .profile-photo {
+
+                width: 105px;
+
+                height: 130px;
+            }
+
+
+            .info-row {
+
+                grid-template-columns: 125px 15px 1fr;
+
+                font-size: 12px;
+            }
+
+
+            .watermark {
+
+                width: 350px;
+            }
+
+
+            .watermark-om {
+
+                font-size: 190px;
+            }
+
+
+            .watermark-text {
+
+                font-size: 20px;
+            }
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 480px) {
+
+            body {
+
+                padding: 10px;
+            }
+
+
+            .biodata-card {
+
+                padding: 30px 18px;
+            }
+
+
+            .top-mantra {
+
+                font-size: 14px;
+            }
+
+
+            .bio-header {
+
+                align-items: flex-start;
+            }
+
+
+            .bio-header h1 {
+
+                font-size: 26px;
+            }
+
+
+            .small-title {
+
+                font-size: 9px;
+
+                letter-spacing: 2px;
+            }
+
+
+            .profile-photo {
+
+                width: 85px;
+
+                height: 110px;
+            }
+
+
+            .info-row {
+
+                grid-template-columns: 105px 12px 1fr;
+
+                font-size: 11px;
+            }
+
+
+            .watermark {
+
+                width: 300px;
+            }
+
+
+            .watermark-om {
+
+                font-size: 150px;
+            }
+
+
+            .watermark-text {
+
+                font-size: 15px;
+
+                letter-spacing: 2px;
+            }
+        }
+
+
+        /* =====================================================
+           PRINT / PDF
+        ===================================================== */
+
+        @media print {
+
+            @page {
+
+                size: A4;
+
+                margin: 0;
+            }
+
+
+            body {
+
+                padding: 0;
+
+                background: #050505;
+
+                -webkit-print-color-adjust: exact;
+
+                print-color-adjust: exact;
+            }
+
+
+            .biodata-card {
+
+                width: 100%;
+
+                max-width: none;
+
+                min-height: 100vh;
+
+                border: 1px solid #c89542;
+
+                box-shadow: none;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         BIODATA CARD
+    ===================================================== -->
+
+    <div class="biodata-card">
+
+
+        <!-- Top Decorative Om -->
+
+        <div class="corner-decoration">
+            ॐ
+        </div>
+
+
+        <!-- =================================================
+             WATERMARK
+        ================================================= -->
+
+        <div class="watermark">
+
+            <div class="watermark-om">
+                ॐ
+            </div>
+
+            <div class="watermark-text">
+                श्री गणेशाय नमः
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TOP MANTRA
+        ================================================= -->
+
+        <div class="top-mantra">
+
+            ॐ श्री गणेशाय नमः
+
+        </div>
+
+
+        <!-- =================================================
+             HEADER
+        ================================================= -->
+
+        <div class="bio-header">
+
+
+            <div>
+
+                <div class="small-title">
+                    BIO DATA
+                </div>
+
+                <h1>
+                    Ankit Dubey
+                </h1>
+                <div class="subtitle">Sr. Hardware Design Engineer</div>
+                <p class="bio-description">
+                  Architecting next-generation power electronics and EVSE solutions with precision. Pioneering innovation where circuits meet compliance and ambition meets execution.
+                 </p>
+
+                 <div class="expertise">
+                  <div><span class="icon">🚀</span> Research &amp; Development</div>
+                  <div><span class="icon">⚡</span> Power Electronics</div>
+                  <div><span class="icon">🌌</span> Astrophysics</div>
+               </div>
+            </div>
+
+
+            <!-- Profile Photo -->
+
+            <div class="profile-photo">
+
+                <!--
+                    IMPORTANT:
+                    Put your image in the same folder
+                    and name it profile.jpg
+                -->
+
+                <img
+                    src="profile.jpg"
+                    alt="Ankit Dubey"
+                >
+
+            </div>
+
+
+        </div>
+
+        <!-- =================================================
+             PERSONAL DETAILS
+        ================================================= -->
+
+        <section class="section">
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Date of Birth
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    15/03/2000
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Time of Birth
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    12:20 PM
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Place of Birth
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Gandhinagar
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Religion
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Hindu
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Caste
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Brahmin
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Gotra
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Bharadwaj
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Education
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    B.Tech (Electrical)
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Occupation
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Senior Hardware Design Engineer
+                </span>
+
+            </div>
+
+            <div class="info-row">
+
+                <span class="label">
+                    Experience
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    4+ Years
+                </span>
+
+            </div>
+
+            <div class="info-row">
+
+                <span class="label">
+                    Working Domain
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Automotive - EVSE &amp; 5G Radio Unit R&amp;D
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+        </section>
+
+
+        <!-- =================================================
+             FAMILY DETAILS
+        ================================================= -->
+
+        <section class="section">
+
+
+            <h2>
+                Family Details
+            </h2>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Father's Name
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Dr. Mahendra Kumar Dubey
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Occupation
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Private Practice
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Mother's Name
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Rachana Dubey
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Occupation
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Housewife
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Brother's Name
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Rajit Dubey
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Education
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    B.Tech (Civil)
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Occupation
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Private Job
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             CONTACT DETAILS
+        ================================================= -->
+
+        <section class="section contact-section">
+
+
+            <h2>
+                Contact Details
+            </h2>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Phone no.
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    8948393016
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Portfolio
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    Project Portfolio
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="label">
+                    Email
+                </span>
+
+                <span class="colon">
+                    :
+                </span>
+
+                <span class="value">
+                    ankitdubey2680@gmail.com
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+</body>
+</html>
