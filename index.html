@@ -221,7 +221,7 @@
 
   /* ---------- HERO ---------- */
   #hero{
-    min-height:100svh;
+    min-height:50svh;
     display:flex;
     align-items:center;
     padding-top:140px;
@@ -520,13 +520,13 @@
   .pcard-title{font-family:var(--display); font-size:19px; font-weight:600;}
   .pcard-dur{font-family:var(--mono); font-size:11.5px; color:var(--muted-dim); white-space:nowrap; padding-top:4px;}
   .pcard-industry{font-family:var(--mono); font-size:12px; color:var(--copper); margin-bottom:16px;}
-  .pcard-block{margin-bottom:14px;}
+  .pcard-block{margin-bottom:14px; text-align: justify;}
   .pcard-block h4{
-    font-family:var(--mono); font-size:11px; text-transform:uppercase;
+    font-family:var(--mono); font-size:11px; text-transform:uppercase; text-align: justify;
     letter-spacing:0.08em; color:var(--muted-dim); margin-bottom:6px;
   }
   .pcard-block p, .pcard-block li{color:var(--muted); font-size:14.5px;}
-  .pcard-block ul li{position:relative; padding-left:14px; margin-bottom:5px;}
+  .pcard-block ul li{position:relative; padding-left:14px; margin-bottom:5px; text-align: justify;}
   .pcard-block ul li::before{content:"–"; position:absolute; left:0; color:var(--copper);}
   .tech-badges{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px;}
   .badge{
@@ -1418,7 +1418,7 @@
         <li><a href="#projects" data-nav>Projects</a></li>
         <li><a href="#skills" data-nav>Skills</a></li>
         <li><a href="#contact" data-nav>Contact</a></li>
-        <li><a href="#Biodata" data-nav>Biodata</a></li>
+        <li><a href="#biodata.html" data-nav>Biodata</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -1435,7 +1435,7 @@
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <div class="hero-kicker">Sr. Hardware Design Engineer</div>
+          <div class="hero-kicker">IOT || Power Electronics ||  PCB Designing || EV</div>
           <h1 class="hero-name">Ankit Dubey</h1>
           <h2 class="hero-title">Sr. Hardware Design Engineer</h2>
           
@@ -1451,7 +1451,8 @@
 
           <div class="hero-cta">
             <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+            <a href="#biodata.html" class="btn btn-ghost">Biodata</a>
+
           </div>
         </div>
         <div class="schematic reveal">
@@ -1537,7 +1538,7 @@
   <section id="education" class="education-section">
 
   <div class="education-heading">
-    <span class="section-kicker">ACADEMIC JOURNEY</span>
+    <span class="section-kicker">02 ACADEMIC JOURNEY</span>
     <h2>Education <span>&amp;</span> Certifications</h2>
   </div>
 
@@ -1779,8 +1780,55 @@
     </aside>
 
   </div>
-
 </section>
+
+ <!-- INTERESTS & PASSIONS -->
+  <section id="interests">
+    <div class="wrap">
+      <div class="eyebrow">03 / Beyond the Schematics</div>
+      <h2 class="section-title reveal">Interests &amp; Passions</h2>
+      <p class="section-sub reveal">What drives my curiosity and inspires my work.</p>
+
+      <div class="hobby-grid reveal">
+        <div class="hobby-card">
+          <div class="hobby-icon">🔬</div>
+          <h3>Research &amp; Development</h3>
+          <p>I'm deeply invested in R&D methodologies—exploring new topologies, pushing performance boundaries, and developing next-gen solutions in power electronics and EVSE technology.</p>
+        </div>
+        
+        <div class="hobby-card space">
+          <div class="hobby-icon">🌌</div>
+          <h3>Space &amp; Astrophysics</h3>
+          <p>The cosmos captivates me—black holes, exoplanets, and the fabric of spacetime. I see parallels between understanding the universe and mastering circuit behavior. Both demand precision and wonder.</p>
+        </div>
+        
+        <div class="hobby-card myth">
+          <div class="hobby-icon">📜</div>
+          <h3>Hindu Mythology &amp; Philosophy</h3>
+          <p>Ancient Hindu epics like the Mahabharata and Bhagavad Gita resonate deeply with me. I explore how timeless wisdom about duty (dharma), choice, and consequence connects to modern science and engineering ethics.</p>
+        </div>
+
+        <div class="hobby-card">
+          <div class="hobby-icon">🏏</div>
+          <h3>Cricket</h3>
+          <p>Cricket teaches strategy, precision, and teamwork. Whether playing or watching, I appreciate the technical nuances and the harmony between individual skill and collective success.</p>
+        </div>
+        
+        <div class="hobby-card">
+          <div class="hobby-icon">🎬</div>
+          <h3>Movies &amp; Web Series</h3>
+          <p>A cinephile at heart, I enjoy stories that explore technology, human potential, and the future. Science fiction, thrillers, and character-driven narratives captivate me most.</p>
+        </div>
+
+        <div class="hobby-card">
+          <div class="hobby-icon">🚀</div>
+          <h3>Space Exploration &amp; Technology</h3>
+          <p>Missions to Mars, lunar bases, and emerging space technologies fascinate me. I see the synergy between space innovation and terrestrial engineering—both demand excellence and courage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PROFESSIONAL JOURNEY & EXPERIENCE -->
   <section id="experience">
     <div class="wrap">
@@ -3140,14 +3188,14 @@
         <!-- Wall Mount Charger -->
         <div class="pcard">
           <div class="pcard-head">
-            <div class="pcard-title">11.5kW Wall Mount Charger</div>
-            <div class="pcard-dur">2024 – 2025</div>
+            <div class="pcard-title">11.5kW & 7.2kW Wall Mount EVSE</div>
+            <div class="pcard-dur">May 2024 – July 2025</div>
           </div>
-          <div class="pcard-industry">EVSE & Mass Production</div>
+          <div class="pcard-industry">IEC standard based type 2 EVSE </div>
 
           <div class="pcard-block">
             <h4>Project Overview</h4>
-            <p>Designed and led production transition for an 11.5kW wall-mounted EVSE charger. As the primary hardware designer, I orchestrated the entire design-to-production journey including compliance and manufacturing support.</p>
+            <p>Designed and led production transition for an 11.5kW wall-mounted EVSE charger. As the primary hardware designer, I orchestrated the entire design-to-production journey including Designing , compliance and manufacturing.</p>
           </div>
 
           <div class="pcard-block">
@@ -3158,7 +3206,7 @@
               <li><strong>Design Review:</strong> Comprehensive review for manufacturability and compliance</li>
               <li><strong>Documentation:</strong> PRD, HDD, DVT reports, and EMI/EMC compliance certification</li>
               <li><strong>Production Leadership:</strong> Led design from ideation through full production ramp</li>
-              <li><strong>Compliance:</strong> Ensured adherence to IEC 61851 and regional EVSE standards</li>
+              <li><strong>Compliance:</strong> Ensured adherence to IEC 61851, EMI & EMC Standards and regional EVSE standards</li>
             </ul>
           </div>
 
@@ -3180,24 +3228,25 @@
         <!-- UL-Based Charger -->
         <div class="pcard">
           <div class="pcard-head">
-            <div class="pcard-title">UL-Compliant EVSE Charger</div>
-            <div class="pcard-dur">2025 – Present</div>
+            <div class="pcard-title">UL-Compliant 11.5kW Bi-Directional EVSE</div>
+            <div class="pcard-dur">July 2025 – July 2026</div>
           </div>
-          <div class="pcard-industry">Regulatory-Driven Design</div>
+          <div class="pcard-industry">UL Regulatory-Driven Design with V2G </div>
 
           <div class="pcard-block">
             <h4>Project Overview</h4>
-            <p>Scoping and developing a UL-standard compliant charger from the ground up. This next-generation EVSE is being designed with regulatory certification as a core requirement, not an afterthought.</p>
+            <p>End-to-end development of a UL-standard-compliant 11.5 kW bi-directional EVSE for V2G/V2H applications, taking the product from concept to innovation. Involved in system requirements, PRD/SRD/HDD, DFMEA/DFM/DVTR documentation, component selection and qualification, schematic and PCB layout review in Xpedition, PCB fabrication/assembly, POC and prototyping, hardware implementation, validation, and cross-functional collaboration with QA and software teams.</p>
           </div>
 
           <div class="pcard-block">
             <h4>Current Scope</h4>
             <ul>
-              <li>Comprehensive specification development aligned with UL 2089 and UL 2202</li>
-              <li>Circuit design with built-in safety margins and redundancy</li>
-              <li>PCB architecture optimized for high-reliability applications</li>
+              <li>Developed an 11.5 kW UL-standard-compliant bi-directional EVSE from concept to prototype for V2G/V2H applications.</li>
+              <li>Created and maintained key engineering documentation, including PRD, SRD, HDD, DFMEA, DFM, and DVTR.</li>
+              <li>Performed component selection and qualification, schematic design, and PCB layout review using Xpedition, including PCB fabrication and assembly support.</li>
               <li>Compliance planning integrated into design phase</li>
               <li>Testing strategy alignment with regulatory requirements</li>
+              <li>Collaborated with QA, firmware/software, and cross-functional engineering teams to optimize design implementation, validation, reliability, and compliance.</li>
             </ul>
           </div>
 
@@ -3218,14 +3267,14 @@
         <!-- AGD Project (Advanced Grid Device) -->
         <div class="pcard">
           <div class="pcard-head">
-            <div class="pcard-title">AGD: Advanced Grid Device</div>
-            <div class="pcard-dur">2025 → Future</div>
+            <div class="pcard-title">Automatic Grid Disconnect System</div>
+            <div class="pcard-dur"> Aug 2026 → Future</div>
           </div>
-          <div class="pcard-industry">Next-Generation Grid Management</div>
+          <div class="pcard-industry">Next-Generation Grid Management || UL Certified</div>
 
           <div class="pcard-block">
             <h4>Project Vision</h4>
-            <p>My current passion project and next frontier—the AGD (Advanced Grid Device). This revolutionary system will integrate Vehicle-to-Grid (V2G), Grid-to-Vehicle (G2V), and Solar-to-Grid (S2G) capabilities in a single, intelligent hardware platform.</p>
+            <p>Developing a UL-standard-compliant Advanced Grid-Distributed (AGD) energy system that integrates the utility grid, solar generation, and a bi-directional 11.5 kW EVSE for V2G/V2H applications. The system is designed with islanding capability to provide safe and reliable backup power during grid outages, enabling intelligent energy management and bidirectional power flow between the grid, solar, EV, and home loads while meeting required safety and regulatory requirements</p>
           </div>
 
           <div class="pcard-block">
@@ -3235,7 +3284,8 @@
               <li><strong>G2V (Grid-to-Vehicle):</strong> Intelligent vehicle charging optimized for grid stability</li>
               <li><strong>S2G (Solar-to-Grid):</strong> Direct solar array integration for distributed renewable energy</li>
               <li><strong>Power Management:</strong> Multi-directional power flow with <strong>8+ transmitters and 8+ receivers</strong> for maximum flexibility</li>
-              <li><strong>Protection & Intelligence:</strong> Overcurrent, overvoltage, and thermal protection with grid-aware algorithms</li>
+              <li><strong>Protection & Intelligence:</strong> Implement safe islanding functionality to maintain critical home loads during grid outages while ensuring proper grid isolation and protection.</li>
+              <li><strong>Optimize renewable energy utilization by intelligently managing solar generation, EV charging/discharging, and grid power consumption.</li>
             </ul>
           </div>
 
@@ -3274,6 +3324,7 @@
             <span class="pill">KiCAD</span>
             <span class="pill">SPICE Simulation</span>
             <span class="pill">LTspice</span>
+            <span class="pill">Xpedition</span>
           </div>
         </div>
 
@@ -3378,37 +3429,43 @@
           <div class="journey-dot"></div>
           <div class="yr">2018–2022</div>
           <h4>B.Tech Education</h4>
-          <p>Electrical engineering foundation at Kanpur University.</p>
+          <p>Electrical Engineering foundation at MPGI, Kanpur, affiliated with AKTU.</p>
         </div>
         <div class="journey-item">
           <div class="journey-dot"></div>
-          <div class="yr">Nov 2022</div>
+          <div class="yr">June 2022</div>
           <h4>First Hardware Role</h4>
           <p>Internship entry into hardware design—learning OrCAD and PCB fundamentals.</p>
         </div>
         <div class="journey-item">
           <div class="journey-dot"></div>
-          <div class="yr">2023</div>
+          <div class="yr">Nov 2022 - May 2023</div>
           <h4>5G Radio Unit</h4>
           <p>First major project—5G N78 band radio unit with DVT completion.</p>
         </div>
         <div class="journey-item">
           <div class="journey-dot"></div>
-          <div class="yr">2023–2024</div>
+          <div class="yr">June 2023– May 2024</div>
           <h4>V2L Inverter</h4>
-          <p>Owned end-to-end design from PoC to customer shipment.</p>
+          <p>Owned end-to-end design and devloped for V2H and V2V applications.</p>
         </div>
         <div class="journey-item">
           <div class="journey-dot"></div>
-          <div class="yr">2024–2025</div>
-          <h4>11.5kW EVSE</h4>
-          <p>Transition to mass production—full design ownership and compliance leadership.</p>
+          <div class="yr">May 2024– July 2025</div>
+          <h4>IEC Standard based 11.5kW EVSE</h4>
+          <p>Idea to mass production—full design ownership and compliance leadership.</p>
         </div>
         <div class="journey-item">
           <div class="journey-dot"></div>
-          <div class="yr">2025+</div>
-          <h4>UL Charger &amp; AGD</h4>
-          <p>Next-gen compliance-first design and the ambitious AGD vision.</p>
+          <div class="yr">July 2025 - July 2026 </div>
+          <h4>11.5kW Bi-directional EVSE </h4>
+          <p>Next-gen UL compliance-first design</p>
+        </div>
+        <div class="journey-item">
+          <div class="journey-dot"></div>
+          <div class="yr">July 2026 to Present </div>
+          <h4>Automatic Grid Disconnect System </h4>
+          <p>Enabling the Future of Distributed Energy with V2G & V2H</p>
         </div>
       </div>
     </div>
