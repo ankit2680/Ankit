@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
     <style>
 
@@ -26,18 +29,22 @@
         }
 
 
+        html {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+
         /* =====================================================
            BODY
         ===================================================== */
 
         body {
-
             min-height: 100vh;
 
             display: flex;
-
             justify-content: center;
-
             align-items: flex-start;
 
             padding: 40px 20px;
@@ -53,6 +60,8 @@
             color: #eeeeee;
 
             font-family: "Inter", Arial, sans-serif;
+
+            overflow-x: hidden;
         }
 
 
@@ -61,13 +70,10 @@
         ===================================================== */
 
         .biodata-card {
-
             position: relative;
 
             width: 100%;
-
             max-width: 850px;
-
             min-height: 1100px;
 
             padding: 50px 65px 55px;
@@ -85,9 +91,7 @@
             border: 1px solid rgba(202, 150, 65, 0.65);
 
             box-shadow:
-
                 0 25px 80px rgba(0,0,0,0.8),
-
                 inset 0 0 80px rgba(200,145,50,0.025);
         }
 
@@ -97,7 +101,6 @@
         ===================================================== */
 
         .biodata-card::before {
-
             content: "";
 
             position: absolute;
@@ -117,11 +120,9 @@
         ===================================================== */
 
         .corner-decoration {
-
             position: absolute;
 
             right: -12px;
-
             top: -18px;
 
             font-family: "Noto Serif Devanagari", serif;
@@ -137,15 +138,13 @@
 
 
         /* =====================================================
-           GANESH / OM WATERMARK
+           WATERMARK
         ===================================================== */
 
         .watermark {
-
             position: absolute;
 
             left: 50%;
-
             top: 53%;
 
             transform: translate(-50%, -50%);
@@ -165,7 +164,6 @@
 
 
         .watermark-om {
-
             font-family: "Noto Serif Devanagari", serif;
 
             font-size: 260px;
@@ -177,7 +175,6 @@
 
 
         .watermark-text {
-
             margin-top: 25px;
 
             font-family: "Noto Serif Devanagari", serif;
@@ -191,11 +188,10 @@
 
 
         /* =====================================================
-           HEADER MANTRA
+           TOP MANTRA
         ===================================================== */
 
         .top-mantra {
-
             position: relative;
 
             z-index: 3;
@@ -221,7 +217,6 @@
         ===================================================== */
 
         .bio-header {
-
             position: relative;
 
             z-index: 3;
@@ -232,16 +227,29 @@
 
             align-items: flex-start;
 
+            width: 100%;
+
+            min-width: 0;
+
             padding-bottom: 5px;
 
             border-bottom: none;
         }
-        
-         
+
+
+        .bio-header > div:first-child {
+            min-width: 0;
+
+            flex: 1;
+        }
+
+
+        /* =====================================================
+           SMALL TITLE
+        ===================================================== */
 
         .small-title {
-
-            margin-bottom: px;
+            margin-bottom: 4px;
 
             color: #999999;
 
@@ -252,215 +260,12 @@
             font-weight: 600;
         }
 
-        
-/* Subtitle */
-.subtitle {
-    margin-top: 7px;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: #e0a53a;
-}
 
-/* Description */
-.bio-description {
-    margin: 12px 0 12px 0;
-    max-width: 390px;
-    color: #d29a32;
-    font-weight: 600;
-    font-family: Arial, sans-serif;
-    font-size: 11.5px;
-    line-height: 1.55;
-    letter-spacing: 0.3px;
-    text-align: justify;
-
-    color: #c8c8c8;
-}
-
-Log in
-Sign up for free
-You said:
-image.png
-
-I want to add sub title below my name Sr. hardware design engineer with below discrption to fullfull my space Architecting next-generation power electronics and EVSE solutions with precision. Pioneering innovation where circuits meet compliance and ambition meets execution.
-
-🚀 Research & Development
-⚡ Power Electronics
-🌌 Astrophysics
-
-Please provide me the HTML and css code
-
-ChatGPT said:
-Absolutely. Based on your screenshot, I’d place the subtitle directly below Ankit Dubey, followed by a compact description and the three specialization lines. This keeps the existing black/gold aesthetic and fills the empty space naturally.
-
-HTML
-<div class="bio-header">
-    <div class="bio-text">
-        <div class="bio-label">BIO DATA</div>
-
-        <h1>Ankit Dubey</h1>
-
-        <div class="subtitle">Sr. Hardware Design Engineer</div>
-
-        <p class="bio-description">
-            Architecting next-generation power electronics and EVSE solutions
-            with precision. Pioneering innovation where circuits meet compliance
-            and ambition meets execution.
-        </p>
-
-        <div class="expertise">
-            <div><span class="icon">🚀</span> Research &amp; Development</div>
-            <div><span class="icon">⚡</span> Power Electronics</div>
-            <div><span class="icon">🌌</span> Astrophysics</div>
-        </div>
-    </div>
-
-    <div class="profile-image">
-        <img src="your-image.jpg" alt="Ankit Dubey">
-    </div>
-</div>
-
-
-CSS
-/* Main bio header */
-.bio-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    padding-top: 15px;
-    box-sizing: border-box;
-}
-
-/* Left content */
-.bio-text {
-    max-width: 430px;
-}
-
-/* BIO DATA */
-.bio-label {
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    letter-spacing: 5px;
-    color: #b9c4ce;
-    margin-bottom: 4px;
-}
-
-/* Name */
-.bio-text h1 {
-    margin: 0;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 28px;
-    font-weight: 400;
-    color: #c38b2c;
-    line-height: 1.1;
-}
-
-/* Subtitle */
-.subtitle {
-    margin-top: 7px;
-    font-family: Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    color: #e0a53a;
-}
-
-/* Description */
-.bio-description {
-    margin: 12px 0 12px 0;
-    max-width: 410px;
-
-    font-family: Arial, sans-serif;
-    font-size: 11.5px;
-    line-height: 1.55;
-    letter-spacing: 0.3px;
-
-    color: #c8c8c8;
-}
-
-/* Expertise section */
-.expertise {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    font-family: Arial, sans-serif;
-    font-size: 11.5px;
-    line-height: 1.4;
-    color: #d5d5d5;
-}
-
-/* Icons */
-.expertise .icon {
-    display: inline-block;
-    width: 22px;
-    font-size: 13px;
-}
-
-/* Image container */
-.profile-image {
-    width: 105px;
-    height: 130px;
-    border: 1px solid #c38b2c;
-    margin-top: 0;
-    overflow: hidden;
-    flex-shrink: 0;
-}
-
-/* Profile image */
-.profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-
-If you want it to look even closer to your screenshot
-Use this slightly more compact version of the description:
-
-<p class="bio-description">
-    Architecting next-generation <strong>power electronics &amp; EVSE</strong>
-    solutions with precision. Pioneering innovation where circuits meet
-    compliance and ambition meets execution.
-</p>
-
-
-And add:
-
-.bio-description strong {
-    color: #d29a32;
-    font-weight: 600;
-}
-
-.expertise {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 22px;
-    margin-top: 12px;
-
-    font-family: Arial, sans-serif;
-    font-size: 10.5px;
-    color: #d5d5d5;
-    white-space: nowrap;
-}
-
-.expertise > div {
-    display: flex;
-    align-items: center;
-}
-
-.expertise .icon {
-    margin-right: 5px;
-    font-size: 13px;
-}
+        /* =====================================================
+           NAME
+        ===================================================== */
 
         .bio-header h1 {
-
             color: #d9a64d;
 
             font-family: "Cormorant Garamond", Georgia, serif;
@@ -470,6 +275,139 @@ And add:
             font-weight: 600;
 
             letter-spacing: 0.5px;
+
+            line-height: 1.1;
+        }
+
+
+        /* =====================================================
+           SUBTITLE
+        ===================================================== */
+
+        .subtitle {
+            margin-top: 7px;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            letter-spacing: 1.8px;
+
+            text-transform: uppercase;
+
+            color: #e0a53a;
+
+            line-height: 1.4;
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .bio-description {
+            width: 100%;
+            max-width: 410px;
+
+            margin: 12px 0;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 11.5px;
+
+            line-height: 1.55;
+
+            letter-spacing: 0.3px;
+
+            color: #c8c8c8;
+
+            text-align: justify;
+
+            overflow-wrap: break-word;
+        }
+
+
+        .bio-description strong {
+            color: #d29a32;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           EXPERTISE
+        ===================================================== */
+
+        .expertise {
+            display: flex;
+
+            flex-direction: row;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 8px 20px;
+
+            width: 100%;
+            max-width: 100%;
+
+            margin-top: 12px;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 10.5px;
+
+            line-height: 1.4;
+
+            color: #d5d5d5;
+
+            white-space: normal;
+        }
+
+
+        .expertise > div {
+            display: flex;
+
+            align-items: center;
+
+            white-space: nowrap;
+        }
+
+
+        .expertise .icon {
+            display: inline-block;
+
+            margin-right: 5px;
+
+            font-size: 13px;
+
+            flex-shrink: 0;
+        }
+
+
+        /* =====================================================
+           DECORATIVE LINE
+        ===================================================== */
+
+        .expertise-line {
+            width: 100%;
+
+            height: 1px;
+
+            margin-top: 14px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #c89542,
+                    transparent
+                );
+
+            opacity: 0.85;
         }
 
 
@@ -478,6 +416,7 @@ And add:
         ===================================================== */
 
         .profile-photo {
+            flex: 0 0 auto;
 
             width: 180px;
 
@@ -485,20 +424,21 @@ And add:
 
             padding: 4px;
 
+            margin-left: 25px;
+
             background: #111111;
 
             border: 1px solid #c7923d;
 
             box-shadow:
-
                 0 0 0 2px rgba(199,146,61,0.08),
-
                 0 10px 30px rgba(0,0,0,0.5);
+
+            overflow: hidden;
         }
 
 
         .profile-photo img {
-
             width: 100%;
 
             height: 100%;
@@ -514,10 +454,11 @@ And add:
         ===================================================== */
 
         .section {
-
             position: relative;
 
             z-index: 3;
+
+            width: 100%;
 
             padding: 25px 0;
 
@@ -525,9 +466,8 @@ And add:
         }
 
 
-        .experience-section {
-
-            padding-top: 23px;
+        .section:last-child {
+            border-bottom: none;
         }
 
 
@@ -536,7 +476,6 @@ And add:
         ===================================================== */
 
         .section h2 {
-
             margin-bottom: 15px;
 
             color: #d59b3c;
@@ -556,12 +495,13 @@ And add:
         ===================================================== */
 
         .info-row {
-
             display: grid;
 
-            grid-template-columns: 145px 20px 1fr;
+            grid-template-columns: 145px 20px minmax(0, 1fr);
 
             align-items: start;
+
+            width: 100%;
 
             margin-bottom: 10px;
 
@@ -574,21 +514,20 @@ And add:
 
 
         .info-row:last-child {
-
             margin-bottom: 0;
         }
 
 
         .label {
-
             color: #a8a8a8;
 
             font-weight: 500;
+
+            min-width: 0;
         }
 
 
         .colon {
-
             color: #c89542;
 
             text-align: center;
@@ -598,10 +537,15 @@ And add:
 
 
         .value {
-
             color: #e6e6e6;
 
             font-weight: 400;
+
+            min-width: 0;
+
+            overflow-wrap: anywhere;
+
+            word-break: break-word;
         }
 
 
@@ -610,13 +554,11 @@ And add:
         ===================================================== */
 
         .info-row:hover .label {
-
             color: #d7a44c;
         }
 
 
         .info-row:hover .value {
-
             color: #ffffff;
         }
 
@@ -626,7 +568,6 @@ And add:
         ===================================================== */
 
         .contact-section {
-
             border-bottom: none;
 
             padding-bottom: 0;
@@ -634,7 +575,6 @@ And add:
 
 
         .contact-section::after {
-
             content: "";
 
             position: absolute;
@@ -652,89 +592,261 @@ And add:
 
 
         /* =====================================================
-           DECORATIVE GOLD LINE
-        ===================================================== */
-
-        .gold-line {
-
-            width: 100%;
-
-            height: 1px;
-
-            background: linear-gradient(
-                90deg,
-                transparent,
-                #c89542,
-                transparent
-            );
-
-            margin: 10px 0;
-        }
-
-
-        /* =====================================================
-           MOBILE
+           MOBILE RESPONSIVE
         ===================================================== */
 
         @media (max-width: 700px) {
 
+            html,
             body {
+                width: 100%;
 
-                padding: 15px;
+                max-width: 100%;
+
+                overflow-x: hidden;
+            }
+
+
+            body {
+                padding: 10px;
+
+                display: block;
             }
 
 
             .biodata-card {
+                width: 100%;
 
-                padding: 35px 25px 40px;
+                max-width: 100%;
 
                 min-height: auto;
+
+                padding: 30px 22px 40px;
+
+                overflow: hidden;
             }
 
 
+            /* HEADER */
+
             .bio-header {
+                display: flex;
+
+                flex-direction: column;
+
+                width: 100%;
 
                 gap: 20px;
+
+                align-items: stretch;
+            }
+
+
+            .bio-header > div:first-child {
+                width: 100%;
+
+                max-width: 100%;
+            }
+
+
+            .small-title {
+                margin-bottom: 4px;
+
+                font-size: 9px;
+
+                letter-spacing: 2.5px;
             }
 
 
             .bio-header h1 {
-
                 font-size: 30px;
+
+                line-height: 1.1;
             }
 
 
-            .profile-photo {
+            .subtitle {
+                margin-top: 7px;
 
-                width: 105px;
+                font-size: 11px;
 
-                height: 130px;
+                line-height: 1.4;
+
+                letter-spacing: 1.2px;
+
+                white-space: normal;
             }
 
 
-            .info-row {
+            /* DESCRIPTION */
 
-                grid-template-columns: 125px 15px 1fr;
+            .bio-description {
+                width: 100%;
 
+                max-width: 100%;
+
+                margin-top: 12px;
+
+                margin-bottom: 12px;
+
+                font-size: 11px;
+
+                line-height: 1.55;
+
+                text-align: left;
+
+                overflow-wrap: break-word;
+            }
+
+
+            /* EXPERTISE */
+
+            .expertise {
+                display: flex;
+
+                flex-direction: row;
+
+                flex-wrap: wrap;
+
+                width: 100%;
+
+                max-width: 100%;
+
+                gap: 7px 14px;
+
+                white-space: normal;
+
+                font-size: 10px;
+            }
+
+
+            .expertise > div {
+                white-space: nowrap;
+            }
+
+
+            .expertise .icon {
                 font-size: 12px;
             }
 
 
-            .watermark {
+            /* LINE */
 
-                width: 350px;
+            .expertise-line {
+                width: 100%;
+
+                margin-top: 12px;
+            }
+
+
+            /* PROFILE PHOTO */
+
+            .profile-photo {
+                align-self: center;
+
+                width: 120px;
+
+                height: 145px;
+
+                margin-left: 0;
+
+                margin-top: 5px;
+            }
+
+
+            /* SECTIONS */
+
+            .section {
+                width: 100%;
+
+                padding: 22px 0;
+            }
+
+
+            .section h2 {
+                font-size: 18px;
+
+                margin-bottom: 14px;
+            }
+
+
+            /* INFORMATION ROW */
+
+            .info-row {
+                display: grid;
+
+                grid-template-columns:
+                    105px
+                    12px
+                    minmax(0, 1fr);
+
+                width: 100%;
+
+                margin-bottom: 9px;
+
+                font-size: 11px;
+
+                line-height: 1.5;
+
+                overflow-wrap: anywhere;
+            }
+
+
+            .label,
+            .value {
+                min-width: 0;
+            }
+
+
+            .value {
+                overflow-wrap: anywhere;
+
+                word-break: break-word;
+            }
+
+
+            /* WATERMARK */
+
+            .watermark {
+                width: 300px;
+
+                max-width: 90%;
             }
 
 
             .watermark-om {
-
-                font-size: 190px;
+                font-size: 150px;
             }
 
 
             .watermark-text {
+                font-size: 15px;
 
-                font-size: 20px;
+                letter-spacing: 2px;
+
+                white-space: normal;
+            }
+
+
+            /* CORNER OM */
+
+            .corner-decoration {
+                font-size: 48px;
+
+                right: -10px;
+
+                top: -15px;
+            }
+
+
+            /* TOP MANTRA */
+
+            .top-mantra {
+                margin-bottom: 22px;
+
+                font-size: 14px;
+
+                line-height: 1.5;
             }
         }
 
@@ -743,79 +855,56 @@ And add:
            SMALL MOBILE
         ===================================================== */
 
-        @media (max-width: 480px) {
-
-            body {
-
-                padding: 10px;
-            }
-
+        @media (max-width: 380px) {
 
             .biodata-card {
-
-                padding: 30px 18px;
-            }
-
-
-            .top-mantra {
-
-                font-size: 14px;
-            }
-
-
-            .bio-header {
-
-                align-items: flex-start;
+                padding: 25px 16px 35px;
             }
 
 
             .bio-header h1 {
-
                 font-size: 26px;
             }
 
 
-            .small-title {
+            .subtitle {
+                font-size: 10px;
 
-                font-size: 9px;
-
-                letter-spacing: 2px;
+                letter-spacing: 1px;
             }
 
 
-            .profile-photo {
-
-                width: 85px;
-
-                height: 110px;
+            .bio-description {
+                font-size: 10.5px;
             }
 
 
-            .info-row {
+            .expertise {
+                gap: 6px 10px;
 
-                grid-template-columns: 105px 12px 1fr;
+                font-size: 9.5px;
+            }
 
+
+            .expertise .icon {
                 font-size: 11px;
             }
 
 
-            .watermark {
+            .info-row {
+                grid-template-columns:
+                    92px
+                    10px
+                    minmax(0, 1fr);
 
-                width: 300px;
+                font-size: 10.5px;
             }
 
 
-            .watermark-om {
+            .profile-photo {
+                width: 100px;
 
-                font-size: 150px;
-            }
-
-
-            .watermark-text {
-
-                font-size: 15px;
-
-                letter-spacing: 2px;
+                height: 125px;
             }
         }
 
@@ -827,15 +916,19 @@ And add:
         @media print {
 
             @page {
-
                 size: A4;
 
                 margin: 0;
             }
 
 
+            html,
             body {
+                overflow: visible;
+            }
 
+
+            body {
                 padding: 0;
 
                 background: #050505;
@@ -847,7 +940,6 @@ And add:
 
 
             .biodata-card {
-
                 width: 100%;
 
                 max-width: none;
@@ -867,7 +959,6 @@ And add:
 
 <body>
 
-
     <!-- =====================================================
          BIODATA CARD
     ===================================================== -->
@@ -875,7 +966,7 @@ And add:
     <div class="biodata-card">
 
 
-        <!-- Top Decorative Om -->
+        <!-- TOP DECORATIVE OM -->
 
         <div class="corner-decoration">
             ॐ
@@ -904,9 +995,7 @@ And add:
         ================================================= -->
 
         <div class="top-mantra">
-
             ॐ श्री गणेशाय नमः
-
         </div>
 
 
@@ -916,41 +1005,79 @@ And add:
 
         <div class="bio-header">
 
-
             <div>
 
                 <div class="small-title">
                     BIO DATA
                 </div>
 
+
                 <h1>
                     Ankit Dubey
                 </h1>
-                <div class="subtitle">Sr. Hardware Design Engineer</div>
+
+
+                <div class="subtitle">
+                    Sr. Hardware Design Engineer
+                </div>
+
+
                 <p class="bio-description">
-                  Architecting next-generation power electronics and EVSE solutions with precision. Pioneering innovation where circuits meet compliance and ambition meets execution.
-                 </p>
+                    Architecting next-generation
+                    <strong>power electronics &amp; EVSE</strong>
+                    solutions with precision. Pioneering innovation where
+                    circuits meet compliance and ambition meets execution.
+                </p>
 
-                 <div class="expertise">
-                  <div><span class="icon">🚀</span> Research &amp; Development</div>
-                  <div><span class="icon">⚡</span> Power Electronics</div>
-                  <div><span class="icon">🌌</span> Astrophysics</div>
-               </div>
+
+                <!-- EXPERTISE -->
+
+                <div class="expertise">
+
+                    <div>
+                        <span class="icon">🚀</span>
+                        Research &amp; Development
+                    </div>
+
+                    <div>
+                        <span class="icon">⚡</span>
+                        Power Electronics
+                    </div>
+
+                    <div>
+                        <span class="icon">🌌</span>
+                        Astrophysics
+                    </div>
+
+                </div>
+
+
+                <!-- HORIZONTAL GOLD LINE -->
+
+                <div class="expertise-line"></div>
+
             </div>
 
 
-            <!-- Profile Photo -->
+            <!-- PROFILE PHOTO -->
+
             <div class="profile-photo">
-               <img src="images/profile.jpg" alt="Ankit Dubey">
+
+                <img
+                    src="images/profile.jpg"
+                    alt="Ankit Dubey"
+                >
+
             </div>
+
         </div>
+
 
         <!-- =================================================
              PERSONAL DETAILS
         ================================================= -->
 
         <section class="section">
-
 
             <div class="info-row">
 
@@ -1087,6 +1214,7 @@ And add:
 
             </div>
 
+
             <div class="info-row">
 
                 <span class="label">
@@ -1102,6 +1230,7 @@ And add:
                 </span>
 
             </div>
+
 
             <div class="info-row">
 
@@ -1119,10 +1248,6 @@ And add:
 
             </div>
 
-
-        </section>
-
-
         </section>
 
 
@@ -1131,7 +1256,6 @@ And add:
         ================================================= -->
 
         <section class="section">
-
 
             <h2>
                 Family Details
@@ -1256,7 +1380,6 @@ And add:
 
             </div>
 
-
         </section>
 
 
@@ -1265,7 +1388,6 @@ And add:
         ================================================= -->
 
         <section class="section contact-section">
-
 
             <h2>
                 Contact Details
@@ -1322,12 +1444,10 @@ And add:
 
             </div>
 
-
         </section>
-
 
     </div>
 
-
 </body>
+
 </html>
