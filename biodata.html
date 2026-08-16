@@ -2,21 +2,37 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Ankit Dubey - Bio Data</title>
 
-    <!-- Google Fonts -->
+
+    <!-- =====================================================
+         GOOGLE FONTS
+    ====================================================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&family=Noto+Serif+Devanagari:wght@400;500;600&display=swap"
         rel="stylesheet"
     >
 
+
     <style>
+
 
         /* =====================================================
            RESET
@@ -31,16 +47,12 @@
 
         html {
             width: 100%;
-            max-width: 100%;
             overflow-x: hidden;
         }
 
 
-        /* =====================================================
-           BODY
-        ===================================================== */
-
         body {
+            width: 100%;
             min-height: 100vh;
 
             display: flex;
@@ -65,15 +77,19 @@
         }
 
 
+
         /* =====================================================
            MAIN BIODATA CARD
         ===================================================== */
 
         .biodata-card {
+
             position: relative;
 
             width: 100%;
+
             max-width: 850px;
+
             min-height: 1100px;
 
             padding: 50px 65px 55px;
@@ -88,7 +104,7 @@
                 ),
                 #0b0b0b;
 
-            border: 1px solid rgba(202, 150, 65, 0.65);
+            border: 1px solid rgba(202,150,65,0.65);
 
             box-shadow:
                 0 25px 80px rgba(0,0,0,0.8),
@@ -96,11 +112,13 @@
         }
 
 
+
         /* =====================================================
            INNER GOLD BORDER
         ===================================================== */
 
         .biodata-card::before {
+
             content: "";
 
             position: absolute;
@@ -115,17 +133,22 @@
         }
 
 
+
         /* =====================================================
            TOP CORNER OM
         ===================================================== */
 
         .corner-decoration {
+
             position: absolute;
 
             right: -12px;
+
             top: -18px;
 
-            font-family: "Noto Serif Devanagari", serif;
+            font-family:
+                "Noto Serif Devanagari",
+                serif;
 
             font-size: 62px;
 
@@ -137,17 +160,21 @@
         }
 
 
+
         /* =====================================================
            WATERMARK
         ===================================================== */
 
         .watermark {
+
             position: absolute;
 
             left: 50%;
+
             top: 53%;
 
-            transform: translate(-50%, -50%);
+            transform:
+                translate(-50%, -50%);
 
             width: 500px;
 
@@ -164,7 +191,10 @@
 
 
         .watermark-om {
-            font-family: "Noto Serif Devanagari", serif;
+
+            font-family:
+                "Noto Serif Devanagari",
+                serif;
 
             font-size: 260px;
 
@@ -175,9 +205,12 @@
 
 
         .watermark-text {
+
             margin-top: 25px;
 
-            font-family: "Noto Serif Devanagari", serif;
+            font-family:
+                "Noto Serif Devanagari",
+                serif;
 
             font-size: 25px;
 
@@ -187,11 +220,13 @@
         }
 
 
+
         /* =====================================================
            TOP MANTRA
         ===================================================== */
 
         .top-mantra {
+
             position: relative;
 
             z-index: 3;
@@ -202,7 +237,9 @@
 
             color: #d59b38;
 
-            font-family: "Noto Serif Devanagari", serif;
+            font-family:
+                "Noto Serif Devanagari",
+                serif;
 
             font-size: 17px;
 
@@ -212,11 +249,13 @@
         }
 
 
+
         /* =====================================================
            HEADER
         ===================================================== */
 
         .bio-header {
+
             position: relative;
 
             z-index: 3;
@@ -229,19 +268,17 @@
 
             width: 100%;
 
-            min-width: 0;
-
             padding-bottom: 5px;
-
-            border-bottom: none;
         }
 
 
         .bio-header > div:first-child {
+
             min-width: 0;
 
             flex: 1;
         }
+
 
 
         /* =====================================================
@@ -249,6 +286,7 @@
         ===================================================== */
 
         .small-title {
+
             margin-bottom: 4px;
 
             color: #999999;
@@ -261,14 +299,19 @@
         }
 
 
+
         /* =====================================================
            NAME
         ===================================================== */
 
         .bio-header h1 {
+
             color: #d9a64d;
 
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family:
+                "Cormorant Garamond",
+                Georgia,
+                serif;
 
             font-size: 36px;
 
@@ -280,11 +323,13 @@
         }
 
 
+
         /* =====================================================
            SUBTITLE
         ===================================================== */
 
         .subtitle {
+
             margin-top: 7px;
 
             font-family: Arial, sans-serif;
@@ -303,12 +348,15 @@
         }
 
 
+
         /* =====================================================
            DESCRIPTION
         ===================================================== */
 
         .bio-description {
+
             width: 100%;
+
             max-width: 410px;
 
             margin: 12px 0;
@@ -330,10 +378,12 @@
 
 
         .bio-description strong {
+
             color: #d29a32;
 
             font-weight: 600;
         }
+
 
 
         /* =====================================================
@@ -341,6 +391,7 @@
         ===================================================== */
 
         .expertise {
+
             display: flex;
 
             flex-direction: row;
@@ -352,7 +403,6 @@
             gap: 8px 20px;
 
             width: 100%;
-            max-width: 100%;
 
             margin-top: 12px;
 
@@ -363,12 +413,11 @@
             line-height: 1.4;
 
             color: #d5d5d5;
-
-            white-space: normal;
         }
 
 
         .expertise > div {
+
             display: flex;
 
             align-items: center;
@@ -378,21 +427,22 @@
 
 
         .expertise .icon {
+
             display: inline-block;
 
             margin-right: 5px;
 
             font-size: 13px;
-
-            flex-shrink: 0;
         }
 
 
+
         /* =====================================================
-           DECORATIVE LINE
+           GOLD LINE
         ===================================================== */
 
         .expertise-line {
+
             width: 100%;
 
             height: 1px;
@@ -411,11 +461,13 @@
         }
 
 
+
         /* =====================================================
-           PROFILE PHOTO
+           DESKTOP PROFILE PHOTO
         ===================================================== */
 
         .profile-photo {
+
             flex: 0 0 auto;
 
             width: 180px;
@@ -439,6 +491,7 @@
 
 
         .profile-photo img {
+
             width: 100%;
 
             height: 100%;
@@ -449,11 +502,27 @@
         }
 
 
+
+        /* =====================================================
+           MOBILE PHOTO
+           
+           Hidden on desktop.
+           Appears inside Personal Details on mobile.
+        ===================================================== */
+
+        .mobile-profile-photo {
+
+            display: none;
+        }
+
+
+
         /* =====================================================
            SECTIONS
         ===================================================== */
 
         .section {
+
             position: relative;
 
             z-index: 3;
@@ -462,13 +531,11 @@
 
             padding: 25px 0;
 
-            border-bottom: 1px solid rgba(205,153,65,0.35);
+            border-bottom:
+                1px solid
+                rgba(205,153,65,0.35);
         }
 
-
-        .section:last-child {
-            border-bottom: none;
-        }
 
 
         /* =====================================================
@@ -476,11 +543,15 @@
         ===================================================== */
 
         .section h2 {
+
             margin-bottom: 15px;
 
             color: #d59b3c;
 
-            font-family: "Cormorant Garamond", Georgia, serif;
+            font-family:
+                "Cormorant Garamond",
+                Georgia,
+                serif;
 
             font-size: 18px;
 
@@ -490,14 +561,19 @@
         }
 
 
+
         /* =====================================================
            INFORMATION ROW
         ===================================================== */
 
         .info-row {
+
             display: grid;
 
-            grid-template-columns: 145px 20px minmax(0, 1fr);
+            grid-template-columns:
+                145px
+                20px
+                minmax(0, 1fr);
 
             align-items: start;
 
@@ -514,11 +590,13 @@
 
 
         .info-row:last-child {
+
             margin-bottom: 0;
         }
 
 
         .label {
+
             color: #a8a8a8;
 
             font-weight: 500;
@@ -528,6 +606,7 @@
 
 
         .colon {
+
             color: #c89542;
 
             text-align: center;
@@ -537,6 +616,7 @@
 
 
         .value {
+
             color: #e6e6e6;
 
             font-weight: 400;
@@ -548,19 +628,48 @@
             word-break: break-word;
         }
 
+        /* =====================================================
+   PORTFOLIO LINK
+===================================================== */
+
+.portfolio-link {
+    color: #d9a64d;
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    transition: all 0.25s ease;
+
+    border-bottom: 1px solid rgba(217, 166, 77, 0.35);
+
+    padding-bottom: 1px;
+}
+
+.portfolio-link:hover {
+    color: #ffffff;
+
+    border-bottom-color: #d9a64d;
+
+    text-shadow:
+        0 0 8px rgba(217, 166, 77, 0.4);
+}
 
         /* =====================================================
            HOVER EFFECT
         ===================================================== */
 
         .info-row:hover .label {
+
             color: #d7a44c;
         }
 
 
         .info-row:hover .value {
+
             color: #ffffff;
         }
+
 
 
         /* =====================================================
@@ -568,6 +677,7 @@
         ===================================================== */
 
         .contact-section {
+
             border-bottom: none;
 
             padding-bottom: 0;
@@ -575,6 +685,7 @@
 
 
         .contact-section::after {
+
             content: "";
 
             position: absolute;
@@ -591,238 +702,355 @@
         }
 
 
+
         /* =====================================================
-           MOBILE RESPONSIVE
+           MOBILE VIEW
         ===================================================== */
 
         @media (max-width: 700px) {
 
-            html,
-            body {
-                width: 100%;
 
-                max-width: 100%;
-
-                overflow-x: hidden;
-            }
-
+            /* BODY */
 
             body {
-                padding: 10px;
 
                 display: block;
+
+                padding: 8px;
             }
 
 
+            /* CARD */
+
             .biodata-card {
+
                 width: 100%;
 
                 max-width: 100%;
 
                 min-height: auto;
 
-                padding: 30px 22px 40px;
+                padding: 25px 16px 35px;
+            }
 
-                overflow: hidden;
+
+            /* MANTRA */
+
+            .top-mantra {
+
+                margin-bottom: 20px;
+
+                font-size: 14px;
+
+                line-height: 1.5;
             }
 
 
             /* HEADER */
 
             .bio-header {
-                display: flex;
 
-                flex-direction: column;
+                display: block;
 
                 width: 100%;
-
-                gap: 20px;
-
-                align-items: stretch;
             }
 
 
-            .bio-header > div:first-child {
-                width: 100%;
-
-                max-width: 100%;
-            }
-
+            /* SMALL TITLE */
 
             .small-title {
+
                 margin-bottom: 4px;
 
                 font-size: 9px;
 
-                letter-spacing: 2.5px;
+                letter-spacing: 2px;
             }
 
+
+            /* NAME */
 
             .bio-header h1 {
-                font-size: 30px;
 
-                line-height: 1.1;
+                font-size: 27px;
+
+                line-height: 1.05;
             }
 
 
-            .subtitle {
-                margin-top: 7px;
+            /* SUBTITLE */
 
-                font-size: 11px;
+            .subtitle {
+
+                margin-top: 6px;
+
+                font-size: 9.5px;
+
+                letter-spacing: 0.8px;
 
                 line-height: 1.4;
-
-                letter-spacing: 1.2px;
-
-                white-space: normal;
             }
 
 
             /* DESCRIPTION */
 
             .bio-description {
+
                 width: 100%;
 
                 max-width: 100%;
 
-                margin-top: 12px;
+                margin: 10px 0;
 
-                margin-bottom: 12px;
+                font-size: 9.5px;
 
-                font-size: 11px;
-
-                line-height: 1.55;
+                line-height: 1.5;
 
                 text-align: left;
-
-                overflow-wrap: break-word;
             }
 
 
             /* EXPERTISE */
 
             .expertise {
+
                 display: flex;
 
                 flex-direction: row;
 
                 flex-wrap: wrap;
 
+                align-items: center;
+
+                gap: 5px 12px;
+
                 width: 100%;
 
-                max-width: 100%;
+                margin-top: 8px;
 
-                gap: 7px 14px;
-
-                white-space: normal;
-
-                font-size: 10px;
+                font-size: 9px;
             }
 
 
             .expertise > div {
+
                 white-space: nowrap;
             }
 
 
             .expertise .icon {
-                font-size: 12px;
+
+                font-size: 11px;
+
+                margin-right: 4px;
             }
 
 
-            /* LINE */
+            /* GOLD LINE */
 
             .expertise-line {
+
                 width: 100%;
+
+                height: 1px;
 
                 margin-top: 12px;
+
+                background:
+                    linear-gradient(
+                        90deg,
+                        transparent,
+                        #c89542,
+                        transparent
+                    );
             }
 
 
-            /* PROFILE PHOTO */
+            /* =================================================
+               HIDE DESKTOP PHOTO ON MOBILE
+            ================================================= */
 
-            .profile-photo {
-                align-self: center;
+            .bio-header .profile-photo {
 
-                width: 120px;
-
-                height: 145px;
-
-                margin-left: 0;
-
-                margin-top: 5px;
+                display: none;
             }
 
 
-            /* SECTIONS */
+            /* =================================================
+               PERSONAL DETAILS
+            ================================================= */
 
-            .section {
-                width: 100%;
+            .personal-section {
 
-                padding: 22px 0;
+                position: relative;
+
+                min-height: 300px;
+
+                padding-top: 18px;
             }
 
 
-            .section h2 {
-                font-size: 18px;
+            .personal-section h2 {
 
                 margin-bottom: 14px;
+
+                font-size: 18px;
             }
 
 
-            /* INFORMATION ROW */
+            /* =================================================
+               PHOTO NEXT TO PERSONAL DETAILS
+            ================================================= */
 
-            .info-row {
+            .mobile-profile-photo {
+
+                display: block;
+
+                position: absolute;
+
+                top: 18px;
+
+                right: 0;
+
+                width: 90px;
+
+                height: 112px;
+
+                padding: 3px;
+
+                background: #111111;
+
+                border: 1px solid #c7923d;
+
+                box-shadow:
+                    0 0 0 2px rgba(199,146,61,0.08),
+                    0 8px 25px rgba(0,0,0,0.5);
+
+                overflow: hidden;
+            }
+
+
+            .mobile-profile-photo img {
+
+                width: 100%;
+
+                height: 100%;
+
+                display: block;
+
+                object-fit: cover;
+            }
+
+
+            /* =================================================
+               PERSONAL DETAILS TEXT AREA
+            ================================================= */
+
+            .personal-details {
+
+                width: calc(100% - 105px);
+
+                padding-right: 5px;
+            }
+
+
+            .personal-details .info-row {
+
                 display: grid;
 
                 grid-template-columns:
-                    105px
-                    12px
+                    95px
+                    10px
                     minmax(0, 1fr);
 
                 width: 100%;
 
-                margin-bottom: 9px;
+                margin-bottom: 8px;
 
-                font-size: 11px;
+                font-size: 10px;
 
-                line-height: 1.5;
-
-                overflow-wrap: anywhere;
+                line-height: 1.45;
             }
 
 
-            .label,
-            .value {
+            .personal-details .label {
+
                 min-width: 0;
             }
 
 
-            .value {
+            .personal-details .value {
+
+                min-width: 0;
+
                 overflow-wrap: anywhere;
 
                 word-break: break-word;
             }
 
 
-            /* WATERMARK */
+            /* =================================================
+               OTHER SECTIONS
+            ================================================= */
+
+            .section {
+
+                width: 100%;
+
+                padding: 20px 0;
+            }
+
+
+            .section h2 {
+
+                font-size: 18px;
+
+                margin-bottom: 12px;
+            }
+
+
+            .section:not(.personal-section) .info-row {
+
+                display: grid;
+
+                grid-template-columns:
+                    100px
+                    10px
+                    minmax(0, 1fr);
+
+                width: 100%;
+
+                margin-bottom: 8px;
+
+                font-size: 10.5px;
+
+                line-height: 1.45;
+            }
+
+
+            /* =================================================
+               WATERMARK
+            ================================================= */
 
             .watermark {
-                width: 300px;
+
+                width: 280px;
 
                 max-width: 90%;
             }
 
 
             .watermark-om {
-                font-size: 150px;
+
+                font-size: 145px;
             }
 
 
             .watermark-text {
-                font-size: 15px;
 
-                letter-spacing: 2px;
+                font-size: 14px;
+
+                letter-spacing: 1.5px;
 
                 white-space: normal;
             }
@@ -831,82 +1059,117 @@
             /* CORNER OM */
 
             .corner-decoration {
-                font-size: 48px;
+
+                font-size: 45px;
 
                 right: -10px;
 
-                top: -15px;
+                top: -14px;
             }
 
-
-            /* TOP MANTRA */
-
-            .top-mantra {
-                margin-bottom: 22px;
-
-                font-size: 14px;
-
-                line-height: 1.5;
-            }
         }
 
 
+
         /* =====================================================
-           SMALL MOBILE
+           VERY SMALL PHONES
         ===================================================== */
 
         @media (max-width: 380px) {
 
+
             .biodata-card {
-                padding: 25px 16px 35px;
+
+                padding: 22px 13px 30px;
             }
 
 
             .bio-header h1 {
-                font-size: 26px;
+
+                font-size: 24px;
             }
 
 
             .subtitle {
-                font-size: 10px;
 
-                letter-spacing: 1px;
+                font-size: 8.5px;
+
+                letter-spacing: 0.6px;
             }
 
 
             .bio-description {
-                font-size: 10.5px;
+
+                font-size: 9px;
+
+                line-height: 1.45;
             }
 
 
             .expertise {
-                gap: 6px 10px;
 
-                font-size: 9.5px;
+                font-size: 8.5px;
+
+                gap: 4px 9px;
             }
 
 
             .expertise .icon {
-                font-size: 11px;
+
+                font-size: 10px;
             }
 
 
-            .info-row {
+            /* SMALLER PHOTO */
+
+            .mobile-profile-photo {
+
+                width: 82px;
+
+                height: 105px;
+
+                right: 0;
+            }
+
+
+            /* PERSONAL TEXT */
+
+            .personal-details {
+
+                width: calc(100% - 95px);
+            }
+
+
+            .personal-details .info-row {
+
                 grid-template-columns:
-                    92px
-                    10px
+                    82px
+                    8px
                     minmax(0, 1fr);
 
-                font-size: 10.5px;
+                font-size: 9px;
             }
 
 
-            .profile-photo {
-                width: 100px;
+            .watermark {
 
-                height: 125px;
+                width: 250px;
             }
+
+
+            .watermark-om {
+
+                font-size: 125px;
+            }
+
+
+            .watermark-text {
+
+                font-size: 12px;
+            }
+
         }
+
 
 
         /* =====================================================
@@ -915,20 +1178,17 @@
 
         @media print {
 
+
             @page {
+
                 size: A4;
 
                 margin: 0;
             }
 
 
-            html,
             body {
-                overflow: visible;
-            }
 
-
-            body {
                 padding: 0;
 
                 background: #050505;
@@ -940,6 +1200,7 @@
 
 
             .biodata-card {
+
                 width: 100%;
 
                 max-width: none;
@@ -950,6 +1211,13 @@
 
                 box-shadow: none;
             }
+
+
+            .mobile-profile-photo {
+
+                display: none;
+            }
+
         }
 
     </style>
@@ -959,6 +1227,7 @@
 
 <body>
 
+
     <!-- =====================================================
          BIODATA CARD
     ===================================================== -->
@@ -966,7 +1235,9 @@
     <div class="biodata-card">
 
 
-        <!-- TOP DECORATIVE OM -->
+        <!-- =================================================
+             TOP DECORATIVE OM
+        ================================================== -->
 
         <div class="corner-decoration">
             ॐ
@@ -975,7 +1246,7 @@
 
         <!-- =================================================
              WATERMARK
-        ================================================= -->
+        ================================================== -->
 
         <div class="watermark">
 
@@ -992,7 +1263,7 @@
 
         <!-- =================================================
              TOP MANTRA
-        ================================================= -->
+        ================================================== -->
 
         <div class="top-mantra">
             ॐ श्री गणेशाय नमः
@@ -1001,7 +1272,7 @@
 
         <!-- =================================================
              HEADER
-        ================================================= -->
+        ================================================== -->
 
         <div class="bio-header">
 
@@ -1023,14 +1294,18 @@
 
 
                 <p class="bio-description">
+
                     Architecting next-generation
                     <strong>power electronics &amp; EVSE</strong>
                     solutions with precision. Pioneering innovation where
                     circuits meet compliance and ambition meets execution.
+
                 </p>
 
 
-                <!-- EXPERTISE -->
+                <!-- =================================================
+                     EXPERTISE
+                ================================================== -->
 
                 <div class="expertise">
 
@@ -1052,14 +1327,19 @@
                 </div>
 
 
-                <!-- HORIZONTAL GOLD LINE -->
+                <!-- GOLD LINE -->
 
                 <div class="expertise-line"></div>
 
             </div>
 
 
-            <!-- PROFILE PHOTO -->
+            <!-- =================================================
+                 DESKTOP PROFILE PHOTO
+
+                 This appears on PC only.
+                 On mobile it is hidden.
+            ================================================== -->
 
             <div class="profile-photo">
 
@@ -1073,189 +1353,221 @@
         </div>
 
 
+
         <!-- =================================================
              PERSONAL DETAILS
-        ================================================= -->
+        ================================================== -->
 
-        <section class="section">
-
-            <div class="info-row">
-
-                <span class="label">
-                    Date of Birth
-                </span>
-
-                <span class="colon">
-                    :
-                </span>
-
-                <span class="value">
-                    15/03/2000
-                </span>
-
-            </div>
+        <section class="section personal-section">
 
 
-            <div class="info-row">
+            <h2>
+                Personal Details
+            </h2>
 
-                <span class="label">
-                    Time of Birth
-                </span>
 
-                <span class="colon">
-                    :
-                </span>
+            <!-- =================================================
+                 MOBILE PROFILE PHOTO
 
-                <span class="value">
-                    12:20 PM
-                </span>
+                 This appears beside Personal Details
+                 on mobile.
+            ================================================== -->
+
+            <div class="mobile-profile-photo">
+
+                <img
+                    src="images/profile.jpg"
+                    alt="Ankit Dubey"
+                >
 
             </div>
 
 
-            <div class="info-row">
-
-                <span class="label">
-                    Place of Birth
-                </span>
-
-                <span class="colon">
-                    :
-                </span>
-
-                <span class="value">
-                    Gandhinagar
-                </span>
-
-            </div>
+            <div class="personal-details">
 
 
-            <div class="info-row">
+                <div class="info-row">
 
-                <span class="label">
-                    Religion
-                </span>
+                    <span class="label">
+                        Date of Birth
+                    </span>
 
-                <span class="colon">
-                    :
-                </span>
+                    <span class="colon">
+                        :
+                    </span>
 
-                <span class="value">
-                    Hindu
-                </span>
+                    <span class="value">
+                        15/03/2000
+                    </span>
 
-            </div>
-
-
-            <div class="info-row">
-
-                <span class="label">
-                    Caste
-                </span>
-
-                <span class="colon">
-                    :
-                </span>
-
-                <span class="value">
-                    Brahmin
-                </span>
-
-            </div>
+                </div>
 
 
-            <div class="info-row">
+                <div class="info-row">
 
-                <span class="label">
-                    Gotra
-                </span>
+                    <span class="label">
+                        Time of Birth
+                    </span>
 
-                <span class="colon">
-                    :
-                </span>
+                    <span class="colon">
+                        :
+                    </span>
 
-                <span class="value">
-                    Bharadwaj
-                </span>
+                    <span class="value">
+                        12:20 PM
+                    </span>
 
-            </div>
-
-
-            <div class="info-row">
-
-                <span class="label">
-                    Education
-                </span>
-
-                <span class="colon">
-                    :
-                </span>
-
-                <span class="value">
-                    B.Tech (Electrical)
-                </span>
-
-            </div>
+                </div>
 
 
-            <div class="info-row">
+                <div class="info-row">
 
-                <span class="label">
-                    Occupation
-                </span>
+                    <span class="label">
+                        Place of Birth
+                    </span>
 
-                <span class="colon">
-                    :
-                </span>
+                    <span class="colon">
+                        :
+                    </span>
 
-                <span class="value">
-                    Senior Hardware Design Engineer
-                </span>
+                    <span class="value">
+                        Gandhinagar
+                    </span>
 
-            </div>
-
-
-            <div class="info-row">
-
-                <span class="label">
-                    Experience
-                </span>
-
-                <span class="colon">
-                    :
-                </span>
-
-                <span class="value">
-                    4+ Years
-                </span>
-
-            </div>
+                </div>
 
 
-            <div class="info-row">
+                <div class="info-row">
 
-                <span class="label">
-                    Working Domain
-                </span>
+                    <span class="label">
+                        Religion
+                    </span>
 
-                <span class="colon">
-                    :
-                </span>
+                    <span class="colon">
+                        :
+                    </span>
 
-                <span class="value">
-                    Automotive - EVSE &amp; 5G Radio Unit R&amp;D
-                </span>
+                    <span class="value">
+                        Hindu
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="label">
+                        Caste
+                    </span>
+
+                    <span class="colon">
+                        :
+                    </span>
+
+                    <span class="value">
+                        Brahmin
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="label">
+                        Gotra
+                    </span>
+
+                    <span class="colon">
+                        :
+                    </span>
+
+                    <span class="value">
+                        Bharadwaj
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="label">
+                        Education
+                    </span>
+
+                    <span class="colon">
+                        :
+                    </span>
+
+                    <span class="value">
+                        B.Tech (Electrical)
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="label">
+                        Occupation
+                    </span>
+
+                    <span class="colon">
+                        :
+                    </span>
+
+                    <span class="value">
+                        Senior Hardware Design Engineer
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="label">
+                        Experience
+                    </span>
+
+                    <span class="colon">
+                        :
+                    </span>
+
+                    <span class="value">
+                        4+ Years
+                    </span>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span class="label">
+                        Working Domain
+                    </span>
+
+                    <span class="colon">
+                        :
+                    </span>
+
+                    <span class="value">
+                        Automotive - EVSE &amp; 5G Radio Unit R&amp;D
+                    </span>
+
+                </div>
+
 
             </div>
 
         </section>
 
 
+
         <!-- =================================================
              FAMILY DETAILS
-        ================================================= -->
+        ================================================== -->
 
         <section class="section">
+
 
             <h2>
                 Family Details
@@ -1380,14 +1692,17 @@
 
             </div>
 
+
         </section>
+
 
 
         <!-- =================================================
              CONTACT DETAILS
-        ================================================= -->
+        ================================================== -->
 
         <section class="section contact-section">
+
 
             <h2>
                 Contact Details
@@ -1414,7 +1729,7 @@
             <div class="info-row">
 
                 <span class="label">
-                    Portfolio
+                    Projects
                 </span>
 
                 <span class="colon">
@@ -1422,7 +1737,12 @@
                 </span>
 
                 <span class="value">
-                    Project Portfolio
+                        <a
+                          href="https://ankit2680.github.io/Ankit/#projects"
+                          class="portfolio-link"
+                          >
+                            Project Portfolio
+                        </a>
                 </span>
 
             </div>
@@ -1444,9 +1764,12 @@
 
             </div>
 
+
         </section>
 
+
     </div>
+
 
 </body>
 
