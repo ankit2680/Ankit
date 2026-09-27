@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ankit Dubey — Sr. Hardware Design Engineer | Power Electronics & Innovation</title>
+
+<meta name="description" content="Ankit Dubey — Sr. Hardware Design Engineer specializing in high-speed PCB design, power electronics, EVSE systems, and cutting-edge hardware innovation.">
+
+<meta property="og:title" content="Ankit Dubey — Sr. Hardware Design Engineer">
+<meta property="og:description" content="Pioneering hardware solutions at the intersection of professional excellence and cosmic curiosity. Specializing in EVSE, power electronics, and advanced PCB design.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Google Identity Services (for Google Login) -->
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+
+<style>
+  :root{
+    --bg-void:#0a1712;
+    --bg-panel:#0f2119;
+    --bg-panel-2:#132a20;
+    --line:#1d3a2b;
+    --line-soft:#182f23;
+    --copper:#d9a05b;
+    --copper-bright:#f0c589;
+    --cyan:#6fe7dd;
+    --silk:#edefe9;
+    --muted:#87a094;
+    --muted-dim:#5c6f65;
+    --accent-gold:#d4af37;
+    --radius:14px;
+    --maxw:1180px;
+    --display: 'Space Grotesk', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --body: 'IBM Plex Sans', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  body{ 
+    background:
+      radial-gradient(circle at 1px 1px, rgba(111,231,221,0.06) 1px, transparent 0) 0 0/28px 28px,
+      var(--bg-void);
+    color:var(--silk);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  body.permission-overlay-active{overflow:hidden;}
+
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  ::selection{background:var(--copper);color:#0a1712;}
+
+  :focus-visible{
+    outline:2px solid var(--cyan);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  h1,h2,h3{
+    font-family:var(--display);
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--silk);
+  }
+
+  /* ========== PERMISSION MODAL ========== */
+  .permission-overlay{
+    position:fixed;
+    top:0;left:0;right:0;bottom:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(4px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    padding:20px;
+  }
+
+  .permission-overlay.active{display:flex;}
+
+  .permission-modal{
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    max-width:500px;
+    width:100%;
+    padding:40px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+    animation:modalSlideIn 0.3s ease-out;
+  }
+
+  @keyframes modalSlideIn{
+    from{
+      opacity:0;
+      transform:translateY(-20px);
+    }
+    to{
+      opacity:1;
+      transform:translateY(0);
+    }
+  }
+
+  .permission-header{
+    margin-bottom:24px;
+  }
+
+  .permission-header h2{
+    font-size:24px;
+    margin-bottom:8px;
+    color:var(--silk);
+  }
+
+  .permission-header p{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.6;
+  }
+
+  .permission-content{
+    margin-bottom:32px;
+  }
+
+  .form-group{
+    margin-bottom:18px;
+  }
+
+  .form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-size:14px;
+    font-weight:500;
+    color:var(--silk);
+  }
+
+  .form-group input{
+    width:100%;
+    padding:12px 16px;
+    background:var(--bg-void);
+    border:1px solid var(--line);
+    border-radius:8px;
+    color:var(--silk);
+    font-family:var(--body);
+    font-size:14px;
+    transition:border-color 0.2s ease;
+  }
+
+  .form-group input:focus{
+    outline:none;
+    border-color:var(--cyan);
+  }
+
+  .form-group input::placeholder{
+    color:var(--muted-dim);
+  }
+
+  .permission-divider{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:24px 0;
+    font-size:13px;
+    color:var(--muted-dim);
+  }
+
+  .permission-divider::before,
+  .permission-divider::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+
+  .google-login-container{
+    margin-bottom:20px;
+  }
+
+  .google-login-container #g_id_onload{
+    display:flex;
+    justify-content:center;
+  }
+
+  .checkbox-group{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    margin:20px 0;
+    padding:12px;
+    background:rgba(111,231,221,0.05);
+    border-radius:8px;
+  }
+
+  .checkbox-group input[type="checkbox"]{
+    width:20px;
+    height:20px;
+    margin-top:2px;
+    cursor:pointer;
+    accent-color:var(--copper);
+  }
+
+  .checkbox-group label{
+    margin:0;
+    font-size:13px;
+    cursor:pointer;
+    line-height:1.5;
+  }
+
+  .checkbox-group a{
+    color:var(--cyan);
+    text-decoration:underline;
+  }
+
+  .permission-actions{
+    display:flex;
+    gap:12px;
+    flex-direction:column;
+  }
+
+  .btn{
+    padding:12px 24px;
+    border-radius:8px;
+    font-family:var(--mono);
+    font-size:13px;
+    font-weight:600;
+    border:none;
+    cursor:pointer;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    transition:all 0.2s ease;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+  }
+
+  .btn-primary{
+    background:var(--copper);
+    color:#0a1712;
+  }
+
+  .btn-primary:hover{
+    background:var(--copper-bright);
+    box-shadow:0 0 20px rgba(217,160,91,0.3);
+  }
+
+  .btn-ghost{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--muted);
+  }
+
+  .btn-ghost:hover{
+    border-color:var(--copper);
+    color:var(--copper-bright);
+  }
+
+  .btn:disabled{
+    opacity:0.5;
+    cursor:not-allowed;
+  }
+
+  .error-message{
+    display:none;
+    padding:12px;
+    background:rgba(255,0,0,0.1);
+    border-left:3px solid #ff4444;
+    border-radius:4px;
+    color:#ff9999;
+    font-size:13px;
+    margin-bottom:16px;
+  }
+
+  .error-message.show{display:block;}
+
+  .success-message{
+    display:none;
+    padding:12px;
+    background:rgba(111,231,221,0.1);
+    border-left:3px solid var(--cyan);
+    border-radius:4px;
+    color:var(--cyan);
+    font-size:13px;
+    margin-bottom:16px;
+  }
+
+  .success-message.show{display:block;}
+
+  .permission-note{
+    font-size:12px;
+    color:var(--muted-dim);
+    text-align:center;
+    margin-top:16px;
+  }
+
+  /* ========== MAIN CONTENT (hide until permission granted) ========== */
+  main.content-locked{
+    opacity:0.3;
+    pointer-events:none;
+  }
+
+  /* ========== BASIC STYLES FROM ORIGINAL ========== */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--copper);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;height:1px;
+    background:var(--copper);
+    display:inline-block;
+  }
+
+  .section-title{
+    font-size:clamp(28px,4vw,42px);
+    margin-bottom:14px;
+  }
+  .section-sub{
+    color:var(--muted);
+    max-width:560px;
+    margin-bottom:56px;
+    font-size:15.5px;
+  }
+
+  section{
+    position:relative;
+    padding:120px 0;
+    border-top:1px solid var(--line-soft);
+  }
+  section#hero{border-top:none;}
+
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(10,23,18,0.55);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .3s ease;
+  }
+  header.scrolled{
+    border-bottom-color:var(--line);
+    background:rgba(10,23,18,0.88);
+  }
+  .navbar{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--mono);
+    font-size:14px;
+    letter-spacing:0.06em;
+    color:var(--silk);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo .dot{width:7px;height:7px;border-radius:50%;background:var(--copper);box-shadow:0 0 8px var(--copper);}
+  nav ul{display:flex;gap:28px;}
+  nav a{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:0.05em;
+    color:var(--muted);
+    text-transform:uppercase;
+    padding:6px 0;
+    border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  nav a:hover, nav a.active{
+    color:var(--copper-bright);
+    border-color:var(--copper);
+  }
+  .nav-toggle{display:none;}
+
+  @media (max-width:860px){
+    nav ul{
+      position:fixed;
+      top:60px;left:0;right:0;
+      flex-direction:column;
+      background:rgba(10,23,18,0.98);
+      padding:20px 32px 28px;
+      gap:16px;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-8px);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;
+    }
+    nav ul.open{opacity:1;transform:translateY(0);pointer-events:auto;}
+    .nav-toggle{
+      display:flex;
+      flex-direction:column;
+      gap:5px;
+      background:none;
+      border:none;
+      cursor:pointer;
+      padding:6px;
+    }
+    .nav-toggle span{width:22px;height:2px;background:var(--silk);}
+  }
+
+  footer{
+    background:var(--bg-panel);
+    border-top:1px solid var(--line);
+    padding:40px 0;
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+  }
+
+  /* Placeholder for minimal hero - full file would have all styling */
+  #hero{
+    min-height:50svh;
+    display:flex;
+    align-items:center;
+    padding-top:140px;
+    padding-bottom:80px;
+  }
+
+  .hero-kicker{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--copper);
+    margin-bottom:20px;
+  }
+
+  .hero-title{
+    font-size:clamp(36px,6vw,64px);
+    font-family:var(--display);
+    line-height:1.1;
+    margin-bottom:20px;
+    color:var(--silk);
+  }
+
+  .hero-subtitle{
+    font-size:18px;
+    color:var(--muted);
+    max-width:520px;
+    margin-bottom:32px;
+    line-height:1.6;
+  }
+
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:20px;
+  }
+
+  .contact-card{
+    padding:24px;
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    transition:all 0.3s ease;
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+  }
+
+  .contact-card:hover{
+    border-color:var(--copper);
+    background:var(--bg-panel-2);
+  }
+
+  .contact-icon{
+    font-size:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+  }
+
+  .contact-label{
+    font-size:12px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-bottom:4px;
+  }
+
+  .contact-value{
+    font-size:15px;
+    color:var(--silk);
+    font-weight:500;
+  }
+
+  @media (max-width:768px){
+    .permission-modal{
+      padding:24px;
+    }
+
+    .permission-header h2{
+      font-size:20px;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+<!-- ========== PERMISSION MODAL OVERLAY ========== -->
+<div class="permission-overlay" id="permissionOverlay">
+  <div class="permission-modal">
+    <div class="permission-header">
+      <h2>Access My Portfolio</h2>
+      <p>Share your details or log in to view my full profile, projects, and work.</p>
+    </div>
+
+    <form id="permissionForm">
+      <div class="error-message" id="errorMsg"></div>
+      <div class="success-message" id="successMsg"></div>
+
+      <!-- MANUAL FORM -->
+      <fieldset>
+        <legend style="font-size:13px; font-weight:600; color:var(--muted); margin-bottom:14px; text-transform:uppercase; letter-spacing:0.05em;">Manual Entry</legend>
+        
+        <div class="form-group">
+          <label for="fullName">Full Name *</label>
+          <input 
+            type="text" 
+            id="fullName" 
+            name="fullName" 
+            placeholder="Your full name"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="your@email.com"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone / Contact</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone" 
+            placeholder="+91 XXXXX XXXXX"
+          >
+        </div>
+
+        <div class="checkbox-group">
+          <input 
+            type="checkbox" 
+            id="agreeTerms" 
+            name="agreeTerms"
+            required
+          >
+          <label for="agreeTerms">
+            I agree to share my contact details and consent to receive updates and collaborations.
+            <a href="#" onclick="alert('Privacy Policy: Your data is stored securely and used only for professional communications.'); return false;">Privacy Policy</a>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- DIVIDER -->
+      <div class="permission-divider">OR</div>
+
+      <!-- GOOGLE LOGIN -->
+      <div class="google-login-container">
+        <div id="g_id_onload"
+          data-client_id="YOUR_GOOGLE_CLIENT_ID_HERE"
+          data-callback="handleGoogleLogin"
+          data-auto_prompt="false">
+        </div>
+        <div id="g_id_button"></div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="permission-actions">
+        <button type="submit" class="btn btn-primary">
+          ✓ Grant Access
+        </button>
+        <button type="button" class="btn btn-ghost" onclick="continueAsGuest()">
+          Continue as Guest
+        </button>
+      </div>
+
+      <p class="permission-note">
+        Your information is stored securely and used only for professional networking.
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main class="content-locked" id="mainContent">
+  <header id="siteHeader">
+    <div class="navbar">
+      <div class="logo">
+        <span class="dot"></span> ANKIT DUBEY
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <ul id="navList">
+          <li><a href="#hero" data-nav="#hero">Home</a></li>
+          <li><a href="#work" data-nav="#work">Work</a></li>
+          <li><a href="#skills" data-nav="#skills">Skills</a></li>
+          <li><a href="#resume" data-nav="#resume">Resume</a></li>
+          <li><a href="#contact" data-nav="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="wrap">
+      <div class="hero-kicker">Sr. Hardware Design Engineer</div>
+      <h1 class="hero-title">Pioneering Power Electronics & EVSE Innovation</h1>
+      <p class="hero-subtitle">Designing the future of electric vehicle charging systems, V2G solutions, and distributed energy management with cutting-edge hardware expertise.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="eyebrow">10 / Reach Out</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-sub">Open to collaborations, projects, and conversations on hardware innovation, power electronics, and the cosmos.</p>
+
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:ankitdubey2680@gmail.com">
+          <div class="contact-icon">✉</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">ankitdubey2680@gmail.com</div>
+          </div>
+        </a>
+        <a class="contact-card" href="https://linkedin.com/in/ankitdubey07" target="_blank" rel="noopener">
+          <div class="contact-icon">🔗</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/ankitdubey07</div>
+          </div>
+        </a>
+        <a class="contact-card" href="tel:+916387285228">
+          <div class="contact-icon">☎</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value">+91 63872 85228</div>
+          </div>
+        </a>
+        <a class="contact-card" href="https://www.instagram.com/ankit_dubey15?igsh=Nzh4bzl1a2FtbTNl" target="_blank" rel="noopener">
+          <div class="contact-icon">📷</div>
+          <div>
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">@ankit_Dubey</div>
+          </div>
+        </a>
+        <a class="contact-card" href="https://wa.me/916387285228" target="_blank" rel="noopener">
+          <div class="contact-icon">💬</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value">+91 63872 85228</div>
+          </div>
+        </a>
+        <a class="contact-card" href="https://www.facebook.com/profile.php?id=100023090364309" target="_blank" rel="noopener">
+          <div class="contact-icon">f</div>
+          <div>
+            <div class="contact-label">Facebook</div>
+            <div class="contact-value">Ankit Dubey</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Designed & built by Ankit Dubey — Sr. Hardware Design Engineer | Pioneering innovation in power electronics and EVSE solutions.</div>
+</footer>
+
+<script>
+  // ========== PERMISSION SYSTEM ==========
+  
+  function showPermissionModal() {
+    const overlay = document.getElementById('permissionOverlay');
+    overlay.classList.add('active');
+    document.body.classList.add('permission-overlay-active');
+  }
+
+  function hidePermissionModal() {
+    const overlay = document.getElementById('permissionOverlay');
+    overlay.classList.remove('active');
+    document.body.classList.remove('permission-overlay-active');
+  }
+
+  function grantAccess(userData) {
+    // Store user data in localStorage
+    localStorage.setItem('portfolioUserData', JSON.stringify({
+      ...userData,
+      timestamp: new Date().toISOString(),
+      grantedAccess: true
+    }));
+
+    // Unlock main content
+    document.getElementById('mainContent').classList.remove('content-locked');
+    hidePermissionModal();
+
+    // Optional: Send to your backend
+    console.log('User data:', userData);
+    // fetch('/api/portfolio-access', { method: 'POST', body: JSON.stringify(userData) })
+  }
+
+  function checkExistingAccess() {
+    const userData = localStorage.getItem('portfolioUserData');
+    if (userData) {
+      try {
+        const parsed = JSON.parse(userData);
+        if (parsed.grantedAccess) {
+          document.getElementById('mainContent').classList.remove('content-locked');
+          return true;
+        }
+      } catch (e) {
+        console.error('Error parsing stored user data:', e);
+      }
+    }
+    return false;
+  }
+
+  // Form submission
+  document.getElementById('permissionForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const agreeTerms = document.getElementById('agreeTerms').checked;
+
+    const errorMsg = document.getElementById('errorMsg');
+    const successMsg = document.getElementById('successMsg');
+
+    // Clear messages
+    errorMsg.classList.remove('show');
+    successMsg.classList.remove('show');
+
+    // Validation
+    if (!fullName || !email || !agreeTerms) {
+      errorMsg.textContent = 'Please fill all required fields and agree to terms.';
+      errorMsg.classList.add('show');
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      errorMsg.textContent = 'Please enter a valid email address.';
+      errorMsg.classList.add('show');
+      return;
+    }
+
+    // Success
+    successMsg.textContent = 'Access granted! Welcome! 🎉';
+    successMsg.classList.add('show');
+
+    setTimeout(() => {
+      grantAccess({
+        method: 'manual',
+        fullName,
+        email,
+        phone
+      });
+    }, 800);
+  });
+
+  // Google Login callback (requires setup in Google Cloud Console)
+  function handleGoogleLogin(response) {
+    // Decode the JWT token
+    const payload = JSON.parse(atob(response.credential.split('.')[1]));
+    
+    // Grant access with Google data
+    grantAccess({
+      method: 'google',
+      fullName: payload.name,
+      email: payload.email,
+      profilePicture: payload.picture
+    });
+
+    document.getElementById('successMsg').textContent = 'Logged in with Google! Welcome! 🎉';
+    document.getElementById('successMsg').classList.add('show');
+  }
+
+  // Continue as guest (limited access)
+  function continueAsGuest() {
+    if (confirm('Continue as guest? You will have limited access to the portfolio.')) {
+      grantAccess({
+        method: 'guest',
+        fullName: 'Guest',
+        email: 'guest@portfolio'
+      });
+    }
+  }
+
+  // Initialize on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    if (!checkExistingAccess()) {
+      showPermissionModal();
+    }
+  });
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navList = document.getElementById('navList');
+  navToggle.addEventListener('click', () => {
+    const open = navList.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', open);
+  });
+  navList.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navList.classList.remove('open');
+    navToggle.setAttribute('aria-expanded','false');
+  }));
+
+  // Header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive:true});
+</script>
+
+</body>
+</html>
